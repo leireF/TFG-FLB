@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block menu %}
+<!-- main navigation -->
+	<nav id="topnav" role="navigation">
+		<div class="menu-toggle">Menu</div>  
+		<ul class="srt-menu" id="menu-main-navigation">
+			<li ><a href="{% url 'home' %}">Home</a></li>
+			<li><a href="{% url 'quienesSomos' %}">Quienes Somos</a>
+				<ul>
+					<li><a href="{% url 'padreLuisBernaola' %}">Padre Luis Bernaola</a></li>
+					<li><a href="{% url 'patronato' %}">Junta de Patronato</a></li>
+					<li><a href="{% url 'socio' %}">Estatutos</a></li>
+				</ul>
+				  
+			</li>
+			<li><a href="{% url 'actividades' %}">Actividades</a>
+				<ul>
+					<li><a href="{% url 'modulos' %}">Cursos Varios</a></li>
+					<li><a href="{% url 'edicionPremios' %}">Premios Rafael Álvarez Suarez</a></li>
+					<li><a href="{% url 'tedx' %}">TEDX</a></li>
+					<li><a href="{% url 'seminarios' %}">Seminarios</a></li>
+					<li><a href="{% url 'ediciones' %}">Becas grado y postgrado</a></li>
+					<li><a href="{% url 'patrocinio' %}">Patrocinio Trabajos Investigación</a></li>
+					<li><a href="{% url 'london' %}">London Finance Seminar</a></li>
+				</ul>
+			</li>
+			<li><a href="{% url 'libros' %}">Publicaciones</a></li>
+			<li class="current"><a href="">Contacto</a></li>	
+		</ul>     
+	</nav><!-- end main navigation -->	
+{% endblock %}
+
+
+
+{% block contenido %}
+<h1 style="text-decoration: underline">Contacto</h1>
+<br>
+<h3>Dirección: C/ Hermanos Aguirre, 2, 48008 Bilbao - Bizkaia</h3>
+<br>
+<div>
+    <iframe width="100%" height="450px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1452.5272369129152!2d-2.940798543558223!3d43.27123457913631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e502049eec4cd%3A0x6e6227a3fb44af3!2sC.%20Hermanos%20Aguirre%2C%202%2C%2048014%20Bilbao%2C%20Vizcaya!5e0!3m2!1ses!2ses!4v1644254010503!5m2!1ses!2ses"></iframe>
+	<br />
+</div>
+<br><br>
+<h1 style="text-decoration: underline">Formulario</h1>
+
+<div id="form" class="form">
+    <form class="formulario">
+        {{ form.non_field_errors }}
+        <div class="text">
+            {{ form.usuario.errors }}
+            <label for="{{ form.usuario.id_for_label }}">Introduce tu nombre y apellidos: </label>
+            {{ form.nombreApellidos }}
+        </div>
+        <br>
+        
+        <div class="text">
+            {{ form.title.errors }}
+            <label for="{{ form.title.id_for_label }}">Introduce tu DNI: </label>
+            {{ form.dni }}
+        </div>
+        <br>
+
+        <div class="text">
+            {{ form.text.errors }}
+            <label for="{{ form.text.id_for_label }}">Introduce tu numero de telefono: </label>
+            {{ form.telefono }}       
+        </div>
+        <br>
+        <div class="text">
+            {{ form.libro.errors }}
+            <label for="{{ form.libro.id_for_label }}">Introduce tu email: </label>
+            {{ form.email }}        
+        </div>
+        <br>
+		
+		<br>
+        <div class="text">
+            {{ form.libro.errors }}
+            <label for="{{ form.libro.id_for_label }}">Describe tu consulta o pregunta.</label>
+            <div class="text">{{ form.texto }}</div>         
+        </div>
+        <br>
+            
+        <input type="submit" name="submit" id="submit" value="Submit"/>
+        <input type="reset" name="reset" value="Reset"/>
+   
+    </form>
+</div>
+
+{% endblock %}

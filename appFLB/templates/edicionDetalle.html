@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block menu %}
+<!-- main navigation -->
+	<nav id="topnav" role="navigation">
+		<div class="menu-toggle">Menu</div>  
+		<ul class="srt-menu" id="menu-main-navigation">
+			<li ><a href="{% url 'home' %}">Home</a></li>
+			<li ><a href="{% url 'quienesSomos' %}">Quienes Somos</a>
+				<ul>
+					<li><a href="{% url 'padreLuisBernaola' %}">Padre Luis Bernaola</a></li>
+					<li><a href="{% url 'patronato' %}">Junta de Patronato</a></li>
+					<li><a href="{% url 'socio' %}">Estatutos</a></li>
+				</ul>
+				  
+			</li>
+			<li><a href="{% url 'actividades' %}">Actividades</a>
+				<ul>
+					<li><a href="{% url 'modulos' %}">Cursos Varios</a></li>
+					<li><a href="{% url 'edicionPremios' %}">Premios Rafael Álvarez Suarez</a></li>
+					<li><a href="{% url 'tedx' %}">TEDX</a></li>
+					<li><a href="{% url 'seminarios' %}">Seminarios</a></li>
+					<li class="current"><a href="{% url 'ediciones' %}">Becas grado y postgrado</a></li>
+					<li><a href="{% url 'patrocinio' %}">Patrocinio Trabajos Investigación</a></li>
+					<li><a href="{% url 'london' %}">London Finance Seminar</a></li>
+				</ul>
+			</li>
+			<li><a href="{% url 'libros' %}">Publicaciones</a></li>
+			<li><a href="{% url 'contacto' %}">Contacto</a></li>	
+		</ul>     
+	</nav><!-- end main navigation -->	
+{% endblock %}
+
+{% block eventos %}
+	<table border ="1" width="350">
+		<tr bgcolor="#FC9FFF">
+			<td align="center"><h3><strong>Ultimos 3 Eventos</strong></h3></td>
+		</tr>
+		{% load static %}
+		{% if lista_eventos %}
+			{% for n in lista_eventos %}
+				<tr><td height="40" style="text-indent: 1em">
+					<h4><a href="{% url 'eventoDetalle' n.id %}" >{{ n.titulo }}</a></h4>		
+				</td></tr>
+			{% endfor %}
+		{% else %}
+			<p>No hay eventos</p>
+		{% endif %}	
+	</table>
+	<a href="{% url 'eventos' %}" class="buttonlink" align="center">Read more</a>
+{% endblock %}
+	
+{% block contenido %}
+<h1 style="text-decoration: underline">Detalles de la Beca</h1>
+{% if edicionBeca %}
+	<h1 style= "color: #348F41; font-weight: bold;">Beca: {{ edicionBeca.beca.tipo}}</h1>
+	<ul>
+		<h3 style= "color: #80BC00; ">Ediciòn:</h3> <h3>{{ edicionBeca.edicionBeca}}</h3>
+		<h4>{{ edicionBeca.fecha}}</h4>
+		<h3 style= "color: #80BC00;">Duraciòn:</h3>	 <h3>{{ edicionBeca.beca.duracion}}</h3>
+		<h3 style= "color: #80BC00;">Precio: </h3> <h3>{{ edicionBeca.beca.importe}} € </h3>
+		
+		<br>
+		{% if beneficiario %}
+			<h2 style= "color: #80BC00; ">Beneficiarios:</h2>
+			{% for b in beneficiario %}
+				<ul>
+					<li><h3>{{b.empresa}}</h3></li>
+					{% if b.imagen %}
+					{% load static %}
+						<img alt="{{ b.imagen.name }}" src="{% static b.imagen.name %}" width="100" height="10"/>
+					{% endif %}
+				</ul>
+			{% endfor %}
+		{% else %}
+			<p>No hay beneficiarios.</p>
+		{% endif %}
+		<br><br>
+	</ul>
+{% else %}
+    <p>No existe esta edicion de Beca.</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>Fundación Luis Bernaola</title>
+	<meta name="description" content="Simple Responsive Template is a template for responsive web design. Mobile first, responsive grid layout, toggle menu, navigation bar with unlimited drop downs, responsive slideshow">
+	<meta name="keywords" content="">
+
+	<!-- Mobile viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	{% load static %}
+	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}"  type="image/x-icon">
+	{% block css %}
+		
+		<!-- CSS-->
+		<!-- Google web fonts. You can get your own bundle at http://www.google.com/fonts. Don't forget to update the CSS accordingly!-->
+		<link href='http://fonts.googleapis.com/css?family=Droid+Serif|Ubuntu' rel='stylesheet' type='text/css'>
+
+		<link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+		<link rel="stylesheet" href="{% static 'js/flexslider/flexslider.css' %}">
+		<link rel="stylesheet" href="{% static 'css/basic-style.css' %}">
+
+		<!-- end CSS-->
+
+		<!-- columns demo style. DELETE IT! -->
+		<style type="text/css">
+		</style>
+	{% endblock %}
+</head>
+
+<body id="home">
+  
+<!-- header area -->
+	<div id="header">
+		<header class="wrapper clearfix">	   
+			<div id="banner">        
+				<div id="logo">
+				<a href="{% url 'home' %}"><img src="" alt="logo"></a>
+				<h4>Fundación Luis Bernaola</h4>
+				</div> 
+			</div>
+			{% block menu %}{% endblock %}
+			
+		</header><!-- end header -->
+	</div>
+	
+<!-- content area -->     
+<div class="wrapper" id="main"> 
+    
+<!-- content area -->    
+	<section id="content">
+        {% block contenido %}{% endblock %}
+	</section>	
+	<aside>
+	{% block paginas %}
+		<br><br><br>
+		<table border ="1" width="250">
+			<tr bgcolor="#D1D1D1">
+				<td align="center"><h3><strong>Enlaces Utilizados</strong></h3></td>
+			</tr>
+			<tr><td height="40" style="text-indent: 1em"><a href="https://tienda.lolaindigomusic.com/">Deusto</a></td></tr>
+			<tr><td height="40" style="text-indent: 1em"><a href="https://dbs.deusto.es/cs/Satellite/deusto-b-school/es/deustobschool/fundacion-bernaola">Deusto Business School</a></td></tr>
+			<tr><td height="40" style="text-indent: 1em"><a href="https://www.alumnidba.es/cs/Satellite/dba/es/tu-asociacion/sobre-nosotros/fundaciones/fundacion-luis-bernaola/dba_generico?pintarVolver=si">Deusto Alumni</a></td></tr>	
+		</table>
+		<br><br><br>
+	{% endblock %}
+
+	{% block eventos %}
+	{% endblock %}
+	</aside>
+</div>
+
+
+<!-- footer area -->    
+<footer>
+
+	<div id="colophon" class="wrapper clearfix">
+		<h1>Contacto</h1>
+		<h4><img src="{% static 'images/ubicacion3.jpg' %}" align="absmiddle"/> Universidad Comercial Deusto, Bilbao</h4>
+		<h4><img src="{% static 'images/telefono2.png' %}" align="absmiddle"/> +34 944 139 436</h4>
+		<h4><img src="{% static 'images/sobre2.png' %}" align="absmiddle"/> fundacionlb@yahoo.es</h4>
+			
+	</div>
+    
+<!--You can NOT remove this attribution statement from any page, unless you get the permission from prowebdesign.ro--><div id="attribution" class="wrapper clearfix" style="color:#666; font-size:11px;">Site built with <a href="http://www.prowebdesign.ro/simple-responsive-template/" target="_blank" title="Simple Responsive Template is a free software by www.prowebdesign.ro" style="color:#777;">Simple Responsive Template</a> by <a href="http://www.prowebdesign.ro/" target="_blank" title="www.prowebdesign.ro" style="color:#777;">Prowebdesign.ro</a></div><!--end attribution-->
+
+</footer><!-- #end footer area --> 
+
+{% block javascript %}
+	<!-- jQuery -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.9.0.min.js">\x3C/script>')</script>
+
+	<script defer src="{% static 'js/flexslider/jquery.flexslider-min.js' %}"></script>
+
+	<!-- fire ups - read this file!  -->   
+	<script src="{% static 'js/main.js' %}"></script>
+{% endblock %}
+</body>
+</html>

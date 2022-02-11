@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block menu %}
+<!-- main navigation -->
+	<nav id="topnav" role="navigation">
+		<div class="menu-toggle">Menu</div>  
+		<ul class="srt-menu" id="menu-main-navigation">
+			<li ><a href="{% url 'home' %}">Home</a></li>
+			<li ><a href="{% url 'quienesSomos' %}">Quienes Somos</a>
+				<ul>
+					<li><a href="{% url 'padreLuisBernaola' %}">Padre Luis Bernaola</a></li>
+					<li class="current"><a href="{% url 'patronato' %}">Junta de Patronato</a></li>
+					<li><a href="{% url 'socio' %}">Estatutos</a></li>
+				</ul>
+				  
+			</li>
+			<li><a href="{% url 'actividades' %}">Actividades</a>
+				<ul>
+					<li><a href="{% url 'modulos' %}">Cursos Varios</a></li>
+					<li><a href="{% url 'edicionPremios' %}">Premios Rafael Álvarez Suarez</a></li>
+					<li><a href="{% url 'tedx' %}">TEDX</a></li>
+					<li><a href="{% url 'seminarios' %}">Seminarios</a></li>
+					<li><a href="{% url 'ediciones' %}">Becas grado y postgrado</a></li>
+					<li><a href="{% url 'patrocinio' %}">Patrocinio Trabajos Investigación</a></li>
+					<li><a href="{% url 'london' %}">London Finance Seminar</a></li>
+				</ul>
+			</li>
+			<li><a href="{% url 'libros' %}">Publicaciones</a></li>
+			<li><a href="{% url 'contacto' %}">Contacto</a></li>	
+		</ul>     
+	</nav><!-- end main navigation -->	
+{% endblock %}
+
+{% block eventos %}
+	<table border ="1" width="350">
+		<tr bgcolor="#FC9FFF">
+			<td align="center"><h3><strong>Ultimos 3 Eventos</strong></h3></td>
+		</tr>
+		{% load static %}
+		{% if lista_eventos %}
+			{% for n in lista_eventos %}
+				<tr><td height="40" style="text-indent: 1em">
+					<h4><a href="{% url 'eventoDetalle' n.id %}" >{{ n.titulo }}</a></h4>		
+				</td></tr>
+			{% endfor %}
+		{% else %}
+			<p>No hay eventos</p>
+		{% endif %}	
+	</table>
+	<a href="{% url 'eventos' %}" class="buttonlink" align="center">Read more</a>
+{% endblock %}
+
+{% block contenido %}
+
+<h1 style="text-decoration: underline">Patronato</h1>
+	{% load static %}
+	<h2> La junta del patronato se encuentra integrada por las siguientes personas:</h2>
+	<br>
+	{% if cargos %}
+		{% for c in cargos %}     
+			<h3>{{ c.cargo}}: </h3>
+			<ul>
+				{% for m in c.miembro.all %}        
+					<h3>{{ m.nombre}} {{ m.apellido}} </h3>
+					<ul>
+						<h4>Fecha Comienzo: {{ m.fechaComienzo}}</h4>
+						<h4>Fecha Fin: {{ m.fechaFin}}</h4>
+					</ul>
+					{% if m.imagen %}
+					{% load static %}
+						<img alt="{{ m.imagen.name }}" src="{% static m.imagen.name %}" width="100" height="10"/>
+					{% endif %} 
+				{% endfor %}   
+			</ul>
+			<br>
+		{% endfor %}             
+		
+	{% else %}
+		<p>No existe ningun cargo.</p>
+	{% endif %}
+	
+	<h3> (1) En representaciòn de la D.B.A en su calidad de Presidente</h3>
+	<h3> (2) Profesor de la D.B.S La Comercial </h3>
+	<br>
+	<center>
+		<img src="{% static 'images/hoja 289.jpg' %}" width="400" height="300"/> 
+	</center>
+{% endblock %}

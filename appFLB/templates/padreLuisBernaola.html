@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block menu %}
+<!-- main navigation -->
+	<nav id="topnav" role="navigation">
+		<div class="menu-toggle">Menu</div>  
+		<ul class="srt-menu" id="menu-main-navigation">
+			<li ><a href="{% url 'home' %}">Home</a></li>
+			<li><a href="{% url 'quienesSomos' %}">Quienes Somos</a>
+				<ul>
+					<li class="current"><a href="{% url 'padreLuisBernaola' %}">Padre Luis Bernaola</a></li>
+					<li><a href="{% url 'patronato' %}">Junta de Patronato</a></li>
+					<li><a href="{% url 'socio' %}">Estatutos</a></li>
+				</ul>
+				  
+			</li>
+			<li><a href="{% url 'actividades' %}">Actividades</a>
+				<ul>
+					<li><a href="{% url 'modulos' %}">Cursos Varios</a></li>
+					<li><a href="{% url 'edicionPremios' %}">Premios Rafael Álvarez Suarez</a></li>
+					<li><a href="{% url 'tedx' %}">TEDX</a></li>
+					<li><a href="{% url 'seminarios' %}">Seminarios</a></li>
+					<li><a href="{% url 'ediciones' %}">Becas grado y postgrado</a></li>
+					<li><a href="{% url 'patrocinio' %}">Patrocinio Trabajos Investigación</a></li>
+					<li><a href="{% url 'london' %}">London Finance Seminar</a></li>
+				</ul>
+			</li>
+			<li><a href="{% url 'libros' %}">Publicaciones</a></li>
+			<li><a href="{% url 'contacto' %}">Contacto</a></li>	
+		</ul>     
+	</nav><!-- end main navigation -->	
+{% endblock %}
+
+{% block eventos %}
+	<table border ="1" width="350">
+		<tr bgcolor="#FC9FFF">
+			<td align="center"><h3><strong>Ultimos 3 Eventos</strong></h3></td>
+		</tr>
+		{% load static %}
+		{% if lista_eventos %}
+			{% for n in lista_eventos %}
+				<tr><td height="40" style="text-indent: 1em">
+					<h4><a href="{% url 'eventoDetalle' n.id %}" >{{ n.titulo }}</a></h4>		
+				</td></tr>
+			{% endfor %}
+		{% else %}
+			<p>No hay eventos</p>
+		{% endif %}	
+	</table>
+	<a href="{% url 'eventos' %}" class="buttonlink" align="center">Read more</a>
+{% endblock %}	
+
+{% block contenido %}
+{% load static %}
+<h1 style="text-decoration: underline">Padre Luis Bernaola</h1>
+<p align="justify"> 
+<img src="{% static 'images/hoja 271.jpg' %}" width="250" height="150" align="right" style="margin-left: 20px"/>
+Luis Bernaola y Churruca, nació en Marquina (Vizcaya) el 5 de Octubre de 1903 y falleció en Bilbao el 17 de Octubre de 1981. Estudió en el 
+colegio de los Padres Jesuitas de Tudela (Navarra) y posteriormente realizó, en la Universidad Comercial, los estudios de ciencias económicas,
+obteniendo la licenciatura con la promoción de 1925. El 15 de Mayo de 1931 ingresó en la Compañía de Jesús, ordenándose sacerdote el 15 de Julio
+de 1939 y pronunció sus últimos votos el 2 de Febrero de 1948. En 1940, ya miembro de la Compañía, ocupó el cargo de prefecto de estudios de La Comercial,
+que acababa de reabrir sus puertas tras el forzoso paréntesis de la guerra (1936-1939). Desde finales de 1941 estuvo al frente de la misma, como prefecto
+de estudios o director - el nombre varió con el paso del tiempo-, ejerciendo un difícil, pero eficaz mando, que consiguió poner a la Universidad Comercial
+a la cabeza de los estudios de economía, y logró que los alumnos de este Centro estuvieran presentes de forma significativa en el devenir económico de España.
+El 16 de Septiembre de 1974 cesó en esta labor, pasando a ocupar la presidencia de INSIDE, pero continuó hasta su muerte como asesor de Padre rector, y del 
+nuevo decano de la ya Facultad de Ciencias Económicas y Empresariales, además de participar, como consiliario, en la Asociación de Licenciados de la Universidad Comercial de Deusto.
+
+<br><br>
+El mundo empresarial era bien conocido por el Padre Bernaola, y no por simples referencias. Antes de ingresar en la Compañía de Jesús estuvo en México, como adjunto 
+a la dirección en una fábrica de tejidos; más adelante, al enfermar su padre, tuvo que regresar a Marquina, donde ocupó el cargo de director-delegado del Banco de 
+Vizcaya y la representación de la Tabacalera. Paso después, en San Sebastián, a ocuparse de un negocio de coloniales al por mayor, construyendo allí sociedad con un
+compañero de la universidad.
+<br><br>
+Conocía también a los jóvenes alumnos, pues una de sus muchas ocupaciones fue la de dirigir el colegio mayor universitario desde 1944 a 1949, siendo ya miembro de la Compañía.
+Se ha dicho del P. Bernaola que "lo era todo", y entre sus peculiaridades destacaba el resultar un archivo viviente que recordaba, sin necesidad de fichas, las características 
+de sus licenciados, lo que le servía para encaminarlos al mejor desarrollo de su profesión. Era también el "perfecto agente", que proporcionaba a las empresas la persona
+adecuada para cubrir las necesidades que en cualquier momento se les presentaban.<br>
+Como indicaba Adrián Celaya "el padre Bernaola nos ha dado la lección de saber adaptarse y evolucionar".
+<br><br>
+Luis Bernaola no era solo "el Jefe", y esto lo fue de verdad como la mayoría de "sus chicos" podrían contestar. Fue también un auténtico servidor de sus alumnos, tanto durante 
+la época que pasaban en Deusto realizando sus estudios, como, de modo especial, cuando ya licenciados se enfrentaban a la actividad empresarial. El Profesor pasaba a ser el consejero 
+o amigo fiel, que ocupaba un principal lugar entre la propia familia.
+<br>
+</p> 
+{% endblock %}

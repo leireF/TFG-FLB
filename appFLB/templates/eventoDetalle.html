@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block menu %}
+<!-- main navigation -->
+	<nav id="topnav" role="navigation">
+		<div class="menu-toggle">Menu</div>  
+		<ul class="srt-menu" id="menu-main-navigation">
+			<li class="current"><a href="{% url 'home' %}">Home</a></li>
+			<li ><a href="{% url 'quienesSomos' %}">Quienes Somos</a>
+				<ul>
+					<li><a href="{% url 'padreLuisBernaola' %}">Padre Luis Bernaola</a></li>
+					<li><a href="{% url 'patronato' %}">Junta de Patronato</a></li>
+					<li><a href="{% url 'socio' %}">Estatutos</a></li>
+				</ul>
+				  
+			</li>
+			<li><a href="{% url 'actividades' %}">Actividades</a>
+				<ul>
+					<li><a href="{% url 'modulos' %}">Cursos Varios</a></li>
+					<li><a href="{% url 'edicionPremios' %}">Premios Rafael Álvarez Suarez</a></li>
+					<li><a href="{% url 'tedx' %}">TEDX</a></li>
+					<li><a href="{% url 'seminarios' %}">Seminarios</a></li>
+					<li><a href="{% url 'ediciones' %}">Becas grado y postgrado</a></li>
+					<li><a href="{% url 'patrocinio' %}">Patrocinio Trabajos Investigación</a></li>
+					<li><a href="{% url 'london' %}">London Finance Seminar</a></li>
+				</ul>
+			</li>
+			<li><a href="{% url 'libros' %}">Publicaciones</a></li>
+			<li><a href="{% url 'contacto' %}">Contacto</a></li>	
+		</ul>     
+	</nav><!-- end main navigation -->	
+{% endblock %}
+
+{% block contenido %}
+<h1 style="text-decoration: underline">Detalle del Evento</h1>
+
+{% if evento %}
+	<h2>{{evento.titulo}}</h2>
+	<h4>{{evento.fecha }}</h4>
+	<h3>{{evento.tipo }}</h3>	
+	<h3 align="justify">{{evento.texto}}</h3>	
+	{% if evento.url %}
+		<h3>{{ evento.url }}</h3>
+	{% endif %}
+	{% if evento.imagen %}
+	{% load static %}
+		<img alt="{{ evento.imagen.name }}" src="{% static evento.imagen.name %}" width="100" height="10"/>
+	{% endif %}
+{% else %}
+    <p>No existe este evento.</p>
+{% endif %}
+
+{% endblock %}

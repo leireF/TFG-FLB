@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block menu %}
+<!-- main navigation -->
+	<nav id="topnav" role="navigation">
+		<div class="menu-toggle">Menu</div>  
+		<ul class="srt-menu" id="menu-main-navigation">
+			<li ><a href="{% url 'home' %}">Home</a></li>
+			<li><a href="{% url 'quienesSomos' %}">Quienes Somos</a>
+				<ul>
+					<li><a href="{% url 'padreLuisBernaola' %}">Padre Luis Bernaola</a></li>
+					<li><a href="{% url 'patronato' %}">Junta de Patronato</a></li>
+					<li><a href="{% url 'socio' %}">Estatutos</a></li>
+				</ul>
+				  
+			</li>
+			<li class="current"><a href="{% url 'actividades' %}">Actividades</a>
+				<ul>
+					<li><a href="{% url 'modulos' %}">Cursos Varios</a></li>
+					<li><a href="{% url 'edicionPremios' %}">Premios Rafael Álvarez Suarez</a></li>
+					<li><a href="{% url 'tedx' %}">TEDX</a></li>
+					<li><a href="{% url 'seminarios' %}">Seminarios</a></li>
+					<li><a href="{% url 'ediciones' %}">Becas grado y postgrado</a></li>
+					<li><a href="{% url 'patrocinio' %}">Patrocinio Trabajos Investigación</a></li>
+					<li><a href="{% url 'london' %}">London Finance Seminar</a></li>
+				</ul>
+			</li>
+			<li><a href="{% url 'libros' %}">Publicaciones</a></li>
+			<li><a href="{% url 'contacto' %}">Contacto</a></li>	
+		</ul>     
+	</nav><!-- end main navigation -->	
+{% endblock %}
+
+{% block eventos %}
+	<table border ="1" width="350">
+		<tr bgcolor="#FC9FFF">
+			<td align="center"><h3><strong>Ultimos 3 Eventos</strong></h3></td>
+		</tr>
+		{% load static %}
+		{% if lista_eventos %}
+			{% for n in lista_eventos %}
+				<tr><td height="40" style="text-indent: 1em">
+					<h4><a href="{% url 'eventoDetalle' n.id %}" >{{ n.titulo }}</a></h4>		
+				</td></tr>
+			{% endfor %}
+		{% else %}
+			<p>No hay eventos</p>
+		{% endif %}	
+	</table>
+	<a href="{% url 'eventos' %}" class="buttonlink" align="center">Read more</a>
+{% endblock %}
+
+{% block contenido %}
+	
+<h1 style="text-decoration: underline">ACTIVIDADES</h1>
+	<ul>
+		<h2><a href="{% url 'modulos' %}">Cursos Varios</a></h2>
+		<h2><a href="{% url 'edicionPremios' %}">Premios Rafael Álvarez Suarez</a></h2>
+		<h2><a href="{% url 'tedx' %}">TEDX</a></h2>
+		<h2><a href="{% url 'seminarios' %}">Seminarios</a></h2>
+		<h2><a href="{% url 'ediciones' %}">Becas grado y postgrado</a></h2>
+		<h2><a href="{% url 'patrocinio' %}">Patrocinio Trabajos Investigación</a></h2>
+		<h2><a href="{% url 'london' %}">London Finance Seminar</a></h2>
+	</ul>
+{% endblock %}
