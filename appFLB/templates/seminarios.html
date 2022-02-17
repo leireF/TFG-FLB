@@ -56,9 +56,9 @@
 <ul>
 	{% if lista_actividadFormacion %}
 		{% for m in lista_actividadFormacion %}
-			<h2>{{ m.titulo}}</h2>
+			<li type ="square"><h2>{{ m.titulo}}</h2></li>
 			{% for m in m.modulos.all %}
-				<ul><li><h2><a href="{% url 'moduloDetalle' m.id  %}">{{ m.titulo}}</a></h2></li></ul>
+				<ul><li><h2><a href="{% url 'seminarioDetalle' m.id  %}">{{ m.titulo}}</a></h2></li></ul>
 			{% endfor %} 
 			<br>
 		{% endfor %}        

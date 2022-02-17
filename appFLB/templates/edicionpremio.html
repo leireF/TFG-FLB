@@ -55,8 +55,10 @@
 
 {% if lista_edicionPremios %}
     {% for e in lista_edicionPremios %}
-		<h2><a href="{% url 'edicionPremioDetalle' e.id  %}">Premio: {{ e.premio}} {{ e.edicionPremio}} ediciòn</a></h2>
-		<ul><h3>{{ e.fecha}}</h3></ul>
+		<h2><a href="{% url 'edicionPremioDetalle' e.id  %}">Premio {{ e.premio}}: {{ e.edicionPremio}} ediciòn</a></h2>
+		{% if e.fecha %}
+			<ul><h3>{{ e.fecha}}</h3></ul>
+		{% endif %}
 		<br>	
     {% endfor %}
                 

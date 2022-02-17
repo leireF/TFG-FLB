@@ -23,9 +23,9 @@ urlpatterns = [
    path('contacto', views.formularioForm, name='contacto'),
    path('modulos', views.modulos, name='modulos'),
    path('modulos/<int:id_modulo>', views.moduloDetalle, name='moduloDetalle'),
-   path('tema/<int:id_tema>', views.temaDetalle, name='temaDetalle'),
    path('tedx', views.tedx, name='tedx'),
    path('seminarios', views.seminarios, name='seminarios'),
+   path('seminarios/<int:id_modulo>', views.seminarioDetalle, name='seminarioDetalle'),
    path('patrocinio', views.patrocinio, name='patrocinio'),
    path('london', views.london, name='london'),
 ]

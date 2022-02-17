@@ -54,12 +54,21 @@
 {% if edicionBeca %}
 	<h1 style= "color: #348F41; font-weight: bold;">Beca: {{ edicionBeca.beca.tipo}}</h1>
 	<ul>
-		<h3 style= "color: #80BC00; ">Ediciòn:</h3> <h3>{{ edicionBeca.edicionBeca}}</h3>
-		<h4>{{ edicionBeca.fecha}}</h4>
-		<h3 style= "color: #80BC00;">Duraciòn:</h3>	 <h3>{{ edicionBeca.beca.duracion}}</h3>
-		<h3 style= "color: #80BC00;">Precio: </h3> <h3>{{ edicionBeca.beca.importe}} € </h3>
-		
+		{% if edicionBeca.fecha %}
+			<h4>{{ edicionBeca.fecha}}</h4>
+		{% endif %}
 		<br>
+		<h2 style= "color: #80BC00;display:inline" >Ediciòn: </h2> 
+		<h3 style= "display:inline">{{ edicionBeca.edicionBeca}}</h3>
+		<br><br>
+		
+		<h2 style= "color: #80BC00;display:inline">Duraciòn: </h2>
+		<h3 style= "display:inline">{{ edicionBeca.beca.duracion}}</h3>
+		<br><br>
+		<h2 style= "color: #80BC00;display:inline">Precio: </h2> 
+		<h3 style= "display:inline">{{ edicionBeca.beca.importe}} € </h3>
+		<br><br>
+		
 		{% if beneficiario %}
 			<h2 style= "color: #80BC00; ">Beneficiarios:</h2>
 			{% for b in beneficiario %}
@@ -67,7 +76,7 @@
 					<li><h3>{{b.empresa}}</h3></li>
 					{% if b.imagen %}
 					{% load static %}
-						<img alt="{{ b.imagen.name }}" src="{% static b.imagen.name %}" width="100" height="10"/>
+						<img alt="{{ b.imagen.name }}" src="{{ b.imagen.url }}" width="100" height="10"/>
 					{% endif %}
 				</ul>
 			{% endfor %}

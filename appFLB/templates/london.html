@@ -54,12 +54,19 @@
 {% if lista_london %}
     {% for l in lista_london %}
 		<h1 style="text-decoration: underline">{{ l.titulo}}</h1>
-		<h4>{{ l.fecha}}</h4>
-		<h3 align="justify">{{ l.texto}}</h3>
+		{% if l.fecha %}
+			<h4>{{ l.fecha}}</h4>
+		{% endif %} 
+		<br>
+		<p align="justify">{{ l.texto}}</p>
 		{% if l.imagen %}
 		{% load static %}
-			<img alt="{{ l.imagen.name }}" src="{% static l.imagen.name %}" width="100" height="10"/>
-		{% endif %} 
+			<img alt="{{ l.imagen.name }}" src="{{ l.imagen.url }}" width="100" height="10"/>
+		{% endif %}
+		<br>
+		{% if l.url %}
+			<h3 style= "color: #80BC00; display:inline">URL: </h3><h3 style= "display:inline">{{ l.url }}</h3>
+		{% endif %}
 		<br>	
     {% endfor %}
                 

@@ -54,10 +54,10 @@
 
 {% if editorial %}
 
-    <h2>{{editorial.nombre}}</h2>
+    <h2 style= "color: #348F41;"><strong>{{editorial.nombre}}</strong></h2>
 	{% if lista_libros %}
 		<br>
-		<h3>Lista de Libros pertenecientes a esta editorial: </h3>
+		<h3 style= "color: #80BC00;">Lista de Libros pertenecientes a esta editorial: </h3>
         {% for p in lista_libros%}
 			<ul>
 				<li><h3>{{p.titulo}}</h3></li>

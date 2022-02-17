@@ -51,9 +51,9 @@
 
 {% block contenido %}
 
-<h1 style="text-decoration: underline">Listado de Actividades de Formaciòn </h1>
+<h1 style="text-decoration: underline">Listado de Actividades de Formación </h1>
 <br>
-<h2> ACTIVIDADES 2020 </h2>
+<h2 style= "color: #348F41;"><strong> ACTIVIDADES 2020 </strong></h2>
 <p align="justify"> Durante el segundo semestre del Curso Académico 2019-20 y el primer semestre del Curso Académico 2021-21
 se han ofrecido, bajo el auspicio de la Fundación Luis Bernaola, las siguientes asignaturas pertenecientes a profundizaciones,
 a los alumnos dentre del Plan de Estudis conducente al Grado en Administración y dirección de Empresas: </p>
@@ -61,9 +61,9 @@ a los alumnos dentre del Plan de Estudis conducente al Grado en Administración 
 <ul>
 	{% if lista_actividadFormacion %}
 		{% for m in lista_actividadFormacion %}
-			<h2>{{ m.titulo}}</h2>
+			<li type ="square"><h2>{{ m.titulo}}</h2></li>
 			{% for m in m.modulos.all %}
-				<ul><li><h2><a href="{% url 'moduloDetalle' m.id  %}">{{ m.titulo}}</a></h2></li></ul>
+				<ul type ="circle" style="color:black"><li><h2><a href="{% url 'moduloDetalle' m.id  %}">{{ m.titulo}}</a></h2></li></ul>
 			{% endfor %} 
 			<br>
 		{% endfor %}        

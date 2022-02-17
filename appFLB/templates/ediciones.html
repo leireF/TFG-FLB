@@ -52,14 +52,16 @@
 {% block contenido %}
 
 <h1 style="text-decoration: underline">Becas de graduación y de postgrado</h1>
-<h4 align="justify"> Como complemento al importante número de becas que la propia Universidad de Deusto facilita a los alumnos que lo necesitan, 
+<p align="justify"> Como complemento al importante número de becas que la propia Universidad de Deusto facilita a los alumnos que lo necesitan, 
 	desde la Fundación completamos situaciones sobrevenidas tanto vía becas como Préstamos al honor, siempre con el objetivo de que 
-	ninguno se vea obligado a abandonar sus estudios por causas económicas.</h4>
+	ninguno se vea obligado a abandonar sus estudios por causas económicas.</p>
 	<br>
 {% if lista_ediciones %}
     {% for e in lista_ediciones %}
-        <h3><a href="{% url 'edicionDetalle' e.id  %} ">{{e.beca.tipo}} {{ e.edicionBeca}} ediciòn</a></h3>
-		<ul><h3>{{ e.fecha}}</h3></ul>
+        <h2><a href="{% url 'edicionDetalle' e.id  %} ">Beca {{e.beca.tipo}}: {{ e.edicionBeca}} ediciòn</a></h2>
+		{% if e.fecha %}
+			<ul><h4>{{ e.fecha}}</h4></ul>
+		{% endif %}
 		<br>
     {% endfor %}
                 

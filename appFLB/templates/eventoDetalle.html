@@ -34,16 +34,21 @@
 <h1 style="text-decoration: underline">Detalle del Evento</h1>
 
 {% if evento %}
-	<h2>{{evento.titulo}}</h2>
-	<h4>{{evento.fecha }}</h4>
-	<h3>{{evento.tipo }}</h3>	
-	<h3 align="justify">{{evento.texto}}</h3>	
-	{% if evento.url %}
-		<h3>{{ evento.url }}</h3>
+	<h2 style= "color: #348F41;"><strong>{{evento.titulo}}</strong></h2>
+	{% if evento.fecha %}
+		<h4>{{evento.fecha }}</h4>
 	{% endif %}
+	<br>
+	<h3 style= "color: #80BC00; display:inline">Tipo de Evento: </h3><h3 style= "display:inline"> {{evento.tipo }}</h3>
+	<br><br>	
+	<h3 align="justify">{{evento.texto}}</h3>	
+	<br>
 	{% if evento.imagen %}
 	{% load static %}
-		<img alt="{{ evento.imagen.name }}" src="{% static evento.imagen.name %}" width="100" height="10"/>
+		<img alt="{{ evento.imagen.name }}" src="{{ evento.imagen.url }}" width="100" height="10"/>
+	{% endif %}
+	{% if evento.url %}
+		<ul><h4 style= "color: #80BC00; display:inline">URL: </h4><h4 style= "display:inline">{{ evento.url }}</h4></ul>
 	{% endif %}
 {% else %}
     <p>No existe este evento.</p>

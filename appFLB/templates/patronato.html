@@ -51,25 +51,34 @@
 
 {% block contenido %}
 
-<h1 style="text-decoration: underline">Patronato</h1>
+<h1 style="text-decoration: underline">Junta de Patronato</h1>
 	{% load static %}
-	<h2> La junta del patronato se encuentra integrada por las siguientes personas:</h2>
+	<p> La junta del patronato se encuentra integrada por las siguientes personas:</p>
 	<br>
 	{% if cargos %}
-		{% for c in cargos %}     
-			<h3>{{ c.cargo}}: </h3>
+		{% for c in cargos %}
 			<ul>
-				{% for m in c.miembro.all %}        
-					<h3>{{ m.nombre}} {{ m.apellido}} </h3>
-					<ul>
-						<h4>Fecha Comienzo: {{ m.fechaComienzo}}</h4>
-						<h4>Fecha Fin: {{ m.fechaFin}}</h4>
-					</ul>
-					{% if m.imagen %}
-					{% load static %}
-						<img alt="{{ m.imagen.name }}" src="{% static m.imagen.name %}" width="100" height="10"/>
-					{% endif %} 
-				{% endfor %}   
+				<li type ="square"><h3 style= "color: #348F41; font-weight: bold;">{{ c.cargo}}: </h3></li>
+				<ul>
+					{% for m in c.miembro.all %}      
+				
+						
+							<h3 style= "color: #80BC00;">{{ m.nombre}} {{ m.apellido}} </h3>
+							<ul>
+								{% if m.fechaComienzo %}
+									<h4>Fecha Comienzo: {{ m.fechaComienzo}}</h4>
+									{% endif %}
+								{% if m.fechaFin %}
+									<h4>Fecha Fin: {{ m.fechaFin}}</h4>
+								{% endif %}
+							</ul>
+							{% if m.imagen %}
+							{% load static %}
+								<img alt="{{ m.imagen.name }}" src="{{ m.imagen.url }}" width="100" height="10"/>
+							{% endif %}
+					
+					{% endfor %}
+				</ul>
 			</ul>
 			<br>
 		{% endfor %}             

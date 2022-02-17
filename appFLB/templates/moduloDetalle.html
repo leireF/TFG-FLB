@@ -53,12 +53,13 @@
 
 {% if modulo %}
 	<h1>{{modulo.actividadFormacion}}</h1>
-	<h2><strong>"{{modulo.titulo}}"</strong></h2>
+	<h2 style= "color: #348F41;"><strong>"{{modulo.titulo}}"</strong></h2>
 	<ul>
 		{% if coordinador %}
 			{% for c in coordinador %} 
 				<ul>		
-					<h3 align="justify"> {{ c.cargo}} : {{ c.texto}} </h3>
+					<h3 style= "color: #80BC00;display:inline" align="justify"> {{ c.cargo}} : </h3>
+					<h3 style= "display:inline">{{ c.texto}} </h3>
 				</ul>
 			{% endfor %}
 		{% else %}
@@ -66,7 +67,7 @@
 		{% endif %}
 		<br>
 		<ul>
-			<h3> Profesorado:</h3>
+			<h3 style= "color: #80BC00;"> Profesorado:</h3>
 			{% if profesor %}
 				{% for p in profesor %} 
 					<ul>	
@@ -81,9 +82,13 @@
 		<ul>
 			{% if tema %}
 				{% for t in tema %} 
-					<h3> {{t.titulo}} </h3>
+					{% if t.titulo %}
+						<h3 style= "color: #80BC00;"> {{t.titulo}} </h3>
+					{% endif %}
 					<ul>	
-						<h4><strong> {{t.parte}} </strong></h4>
+						{% if t.parte %}
+							<h4><strong> {{t.parte}} </strong></h4>
+						{% endif %}
 						<h4 align="justify"> {{t.programa}} </h4>
 					</ul>
 					<br>

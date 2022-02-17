@@ -77,8 +77,8 @@ def editorialDetalle(request, id_editorial):
 #SACA EL LISTADO DE SOCIOS
 def socio(request):
     eventos = get_list_or_404(Evento.objects.order_by('-fecha')[:3])
-    socioJuridico = get_list_or_404(Socio.objects.order_by('tipo').filter(tipo ='Persona Juridica'))
-    socioFisico = get_list_or_404(Socio.objects.order_by('tipo').filter(tipo ='Persona Fisica'))
+    socioJuridico = get_list_or_404(Socio.objects.order_by('tipo').filter(tipo ='Persona Jurídica'))
+    socioFisico = get_list_or_404(Socio.objects.order_by('tipo').filter(tipo ='Persona Física'))
     context = {'lista_socios_juridicos': socioJuridico, 'lista_socios_fisicos': socioFisico,'lista_eventos': eventos }
     return render(request, 'socio.html', context)	
     
@@ -135,15 +135,7 @@ def moduloDetalle(request, id_modulo):
     profesor = modulo.profesor.all()
     tema = modulo.tema.all()
     context = {'modulo': modulo, 'coordinador' : coordinador, 'profesor': profesor, 'tema': tema, 'lista_eventos': eventos}
-    return render(request, 'moduloDetalle.html', context)   
-
-#SACA LOS DATOS CONCRETOS DE UN MODULO
-def temaDetalle(request, id_tema):
-    eventos = get_list_or_404(Evento.objects.order_by('-fecha')[:3])
-    tema = get_object_or_404(Tema, pk = id_tema)
-    profesor = tema.profesor.all()
-    context = {'tema': tema, 'profesor' : profesor,'lista_eventos': eventos}
-    return render(request, 'moduloDetalle.html', context)    
+    return render(request, 'moduloDetalle.html', context)      
     
 def formularioForm(request):
 	submitted = False
@@ -172,6 +164,16 @@ def seminarios(request):
     context = {'lista_actividadFormacion': actividadFormacion,'lista_eventos': eventos}
     return render(request, 'seminarios.html', context)   
     
+#SACA LOS DATOS CONCRETOS DE UN SEMINARIO
+def seminarioDetalle(request, id_modulo):
+    eventos = get_list_or_404(Evento.objects.order_by('-fecha')[:3])
+    modulo = get_object_or_404(Modulo, pk = id_modulo)
+    coordinador = modulo.coordinadores.all()
+    profesor = modulo.profesor.all()
+    tema = modulo.tema.all()
+    context = {'modulo': modulo, 'coordinador' : coordinador, 'profesor': profesor, 'tema': tema, 'lista_eventos': eventos}
+    return render(request, 'seminarioDetalle.html', context)   
+    
 def patrocinio(request):
     eventos = get_list_or_404(Evento.objects.order_by('-fecha')[:3])
     patrocinio = get_list_or_404(Evento.objects.order_by('tipo').filter(tipo ='Patrocinio Trabajos Investigación'))
@@ -179,7 +181,6 @@ def patrocinio(request):
     return render(request, 'patrocinio.html', context)  
     
 def london(request):
-    
     london = get_list_or_404(Evento.objects.order_by('tipo').filter(tipo ='London Finance Seminar'))
     eventos = get_list_or_404(Evento.objects.order_by('-fecha')[:3])
     context = {'lista_london': london,'lista_eventos': eventos}

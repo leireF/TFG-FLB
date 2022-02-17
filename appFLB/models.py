@@ -6,11 +6,11 @@ from datetime import datetime
 		
 class Miembro(models.Model):
     #id = models.AutoField(primary_key=True)
-    fechaComienzo = models.DateField()
-    fechaFin = models.DateField(null=True) # REVISR PORQUE NO ME DEJA PONER LA FECHA VACIA
+    fechaComienzo = models.DateField(null=True,blank=True)
+    fechaFin = models.DateField(null=True,blank=True) # PONIENDO BLANK=TRUE se soluciona lo de que las fechas no sean obligatorias
     nombre = models.CharField(max_length= 20, default=" ")
     apellido = models.CharField(max_length= 30, default=" ")
-    imagen = models.ImageField(upload_to='appFLB\static\img',blank=True,null=True,verbose_name='Image')
+    imagen = models.ImageField(upload_to='img',blank=True,null=True,verbose_name='Image')
     
     def get_absolute_url(self):
         return reverse("miembro-detalle", kwargs={"pk": self.id}) 
@@ -36,11 +36,12 @@ TIPOS_SOCIOS = (
     
 class Socio(models.Model):
     #id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length= 20, default=" ")
-    NIF = models.CharField(max_length= 20, default=" ")
+    nombre = models.CharField(max_length= 40, default=" ")
+    apellido = models.CharField(max_length = 30, default="", blank=True)
+    NIF = models.CharField(max_length= 20, default="", blank=True)
     tipo = models.CharField(max_length=30, choices=TIPOS_SOCIOS)
-    fecha_alta = models.DateField()
-    fecha_baja = models.DateField(null=True)
+    fecha_alta = models.DateField(null=True,blank=True)
+    fecha_baja = models.DateField(null=True,blank=True)
     
     def get_absolute_url(self):
         return reverse("socio-detalle", kwargs={"pk": self.id}) 
@@ -52,7 +53,7 @@ class Autor(models.Model):
     #id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=30, default="")
     apellido = models.CharField(max_length = 30, default="")
-    imagen = models.ImageField(upload_to='appFLB\static\img',blank=True,null=True,verbose_name='Image')
+    imagen = models.ImageField(upload_to='img',blank=True,null=True,verbose_name='Image')
     
     def get_absolute_url(self):
         return reverse("autor-detalle", kwargs={"pk": self.id})
@@ -75,9 +76,9 @@ class Libro(models.Model):
     titulo = models.CharField(max_length=100, default="")
     editorial = models.ForeignKey(Editorial, on_delete=models.CASCADE)
     sinopsis = models.CharField(max_length=2000, default="", blank=True)
-    fecha_publicacion = models.DateField()
+    fecha_publicacion = models.DateField(null=True,blank=True)
     autores = models.ManyToManyField(Autor)
-    imagen = models.ImageField(upload_to='appFLB\static\img',blank=True,null=True,verbose_name='Image')
+    imagen = models.ImageField(upload_to='img',blank=True,null=True,verbose_name='Image') #RUTA BUENA DE IMAGENES. para que funcione despues de subirlas copiar la carpeta y meterla dentro de appFLB\STATIC
     url = models.URLField(null=True, blank=True, verbose_name="Dirección Web")
      
     def get_absolute_url(self):
@@ -92,7 +93,7 @@ class Premio(models.Model):
     objetivo = models.CharField(max_length= 1000, default="", blank=True)
     dirigido = models.CharField(max_length= 1000, default="", blank=True)
     premio = models.CharField(max_length=50, default="")
-    imagen = models.ImageField(upload_to='appFLB\static\img',blank=True,null=True,verbose_name='Image')
+    imagen = models.ImageField(upload_to='img',blank=True,null=True,verbose_name='Image')
     url = models.URLField(null=True, blank=True, verbose_name="Dirección Web")
     
     def get_absolute_url(self):
@@ -105,7 +106,7 @@ class Ganador(models.Model):
     #id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=30, default="")
     apellido = models.CharField(max_length=50, default="")
-    imagen = models.ImageField(upload_to='appFLB\static\img',blank=True,null=True,verbose_name='Image')
+    imagen = models.ImageField(upload_to='img',blank=True,null=True,verbose_name='Image')
     
     def get_absolute_url(self):
         return reverse("ganador-detalle", kwargs={"pk": self.id})
@@ -117,7 +118,7 @@ class Jurado(models.Model):
     #id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=30, default="")
     apellido = models.CharField(max_length=50, default="")
-    imagen = models.ImageField(upload_to='appFLB\static\img',blank=True,null=True,verbose_name='Image')
+    imagen = models.ImageField(upload_to='img',blank=True,null=True,verbose_name='Image')
     
     def get_absolute_url(self):
         return reverse("jurado-detalle", kwargs={"pk": self.id})
@@ -127,8 +128,8 @@ class Jurado(models.Model):
         
 class EdicionPremio(models.Model):
     #id = models.AutoField(primary_key = True)
-    fecha = models.DateField()
-    imagen = models.ImageField(upload_to='appFLB\static\img',blank=True,null=True,verbose_name='Image')
+    fecha = models.DateField(null=True,blank=True)
+    imagen = models.ImageField(upload_to='img',blank=True,null=True,verbose_name='Image')
     edicionPremio = models.CharField(max_length=20, default="")
     premio = models.ForeignKey(Premio, on_delete=models.CASCADE) 
     ganador = models.ForeignKey(Ganador, on_delete=models.CASCADE) 
@@ -147,7 +148,7 @@ TIPOS_ACTIVIDADES = (
 
 class Coordinador(models.Model):
     #id = models.AutoField(primary_key = True)
-    cargo = models.CharField(max_length= 100, default="", blank=True)
+    cargo = models.CharField(max_length= 100, default="")
     texto = models.CharField(max_length=1000, default="")
 
     def get_absolute_url(self):
@@ -214,10 +215,10 @@ TIPOS_EVENTOS = (
 class Evento(models.Model):
     #id = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=50, default="")
-    fecha = models.DateField()
+    fecha = models.DateField(null=True,blank=True)
     texto = models.CharField(max_length=1000, default="")
     tipo = models.CharField(max_length=50, choices=TIPOS_EVENTOS)
-    imagen = models.ImageField(upload_to='appFLB\static\img',blank=True,null=True,verbose_name='Image')
+    imagen = models.ImageField(upload_to='img',blank=True,null=True,verbose_name='Image')
     url = models.URLField(null=True, blank=True, verbose_name="Dirección Web")
     
     def get_absolute_url(self):
@@ -229,7 +230,7 @@ class Evento(models.Model):
 class Beneficiario(models.Model):
     #id = models.AutoField(primary_key=True)
     empresa = models.CharField( max_length=100, default="")
-    imagen = models.ImageField(upload_to='appFLB\static\img',blank=True,null=True,verbose_name='Image')
+    imagen = models.ImageField(upload_to='img',blank=True,null=True,verbose_name='Image')
     
     def get_absolute_url(self):
         return reverse("beneficiario-detalle", kwargs={"pk": self.id})
@@ -251,10 +252,10 @@ class Beca(models.Model):
  
 class EdicionBeca(models.Model):
     #id = models.AutoField(primary_key = True)
-    fecha = models.DateField()
+    fecha = models.DateField(null=True,blank=True)
     beca = models.ForeignKey(Beca, on_delete=models.CASCADE)
     edicionBeca = models.CharField( max_length=20, default="")
-    imagen = models.ImageField(upload_to='appFLB\static\img',blank=True,null=True,verbose_name='Image')
+    imagen = models.ImageField(upload_to='img',blank=True,null=True,verbose_name='Image')
     beneficiario = models.ManyToManyField(Beneficiario)
     
     def get_absolute_url(self):

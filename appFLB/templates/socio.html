@@ -51,17 +51,36 @@
 
 {% block contenido %}
 {% load static %}
-<h1 style="text-decoration: underline">Estatutos</h1>
+<h1 style="text-decoration: underline">Los Fundadores y Colaboradores</h1>
+<p align="justify"> El colectivo de Fundadores y Colaboradores a 31 de diciembre de 2020 está compuesto por
+466 miembros, de los cueles 410 son personas físicas y 56 jurídicas.
+<br>
+El conjunto de las personas físicas lo constituyen casi en su totalidad miembros de la antigua Asociación 
+de Licenciados por la Universidad Comercial de Deusto, hoy integrada en la Deusto Business Alumni.
+<br>
+La relación de Fundadores y Colaboradores a la fecha antes citada, es la siguiente:</p>
+<br>
 <table>
 	<tr>
 		{% if lista_socios_fisicos %}
 			<td align="center" valign="top" width="400" height="300" >
-			<h2 style= "color: #348F41; font-weight: bold;">Personas Físicas </h2>
+				<h2 style= "color: #348F41; font-weight: bold;">Personas Físicas </h2>
 				{% for e in lista_socios_fisicos %}
-					<h3 style= "color: #80BC00; font-size: 25px;">{{ e.nombre}}</h3>
-					<h3>DNI: {{ e.NIF}}</h3>
-					<h4>Fecha de Alta: {{ e.fecha_alta}}</h4>
-					<h4>Fecha de Baja: {{ e.fecha_baja}}</h4>
+					<li>
+						<h3 style= "color: #80BC00; font-size: 20px;display:inline">{{ e.nombre}}</h3>
+						{% if e.apellido %}
+							<h3 style= "color: #80BC00; font-size: 20px;display:inline ">{{ e.apellido}}</h3>
+						{% endif %}
+					</li>
+					{% if e.NIF %}
+						<h3>DNI: {{ e.NIF}}</h3>
+					{% endif %}
+					{% if e.fecha_alta %}
+						<h4>Fecha de Alta: {{ e.fecha_alta}}</h4>
+					{% endif %}
+					{% if e.fecha_baja %}
+						<h4>Fecha de Baja: {{ e.fecha_baja}}</h4>
+					{% endif %}
 					<br>
 				{% endfor %} 
 			</td>
@@ -73,10 +92,21 @@
 			<td align="center" valign="top" width="400" height="300">
 				<h2 style= "color: #348F41; font-weight: bold;">Personas Jurídicas </h2>
 				{% for e in lista_socios_juridicos %}
-					<h3 style= "color: #80BC00; font-size: 25px; ">{{ e.nombre}}</h3>
-					<h3>DNI: {{ e.NIF}}</h3>
-					<h4>Fecha de Alta: {{ e.fecha_alta}}</h4>
-					<h4>Fecha de Baja: {{ e.fecha_baja}}</h4>
+					<li>
+						<h3 style= "color: #80BC00; font-size: 20px; display:inline">{{ e.nombre}}</h3>
+						{% if e.apellido %}
+							<h3 style= "color: #80BC00; font-size: 20px; display:inline">{{ e.apellido}}</h3>
+						{% endif %}
+					</li>
+					{% if e.NIF %}
+						<h3>DNI: {{ e.NIF}}</h3>
+					{% endif %}
+					{% if e.fecha_alta %}
+						<h4>Fecha de Alta: {{ e.fecha_alta}}</h4>
+					{% endif %}
+					{% if e.fecha_baja %}
+						<h4>Fecha de Baja: {{ e.fecha_baja}}</h4>
+					{% endif %}
 					<br>			
 				{% endfor %}
 			</td>
@@ -87,6 +117,17 @@
 		
 	</tr>
 </table>
+<p align="justify">El 2019 se ha registrado el siguiente movimiento de altas:
+<br><br>
+Fundadores al 31-12-19 ..................... 465
+<br>
+Altas  ....................................................... +  1
+<br>
+____
+<br>
+Fundadores al 31-12-20 ..................... 466
+
+  </p>
 <center>
 	<img src="{% static 'images/hoja 29.jpg' %}" width="500" height="400"/> 
 </center>

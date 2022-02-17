@@ -55,25 +55,33 @@
 {% if edicionPremio %}
 	<h1 style= "color: #348F41; font-weight: bold;">Premio: {{ edicionPremio.premio}}</h1>
 	<ul>
-		<h4>{{ edicionPremio.fecha}}</h4>
+		{% if edicionPremio.fecha %}
+			<h4>{{ edicionPremio.fecha}}</h4>
+		{% endif %}
 		<br>
-		<h2 style= "color: #80BC00; ">Introducción</h2>
-		<h3>{{edicionPremio.premio.introduccion}}</h3>
-		<br>
-		<h2 style= "color: #80BC00;">Objetivos</h2>
-		<h3>{{edicionPremio.premio.objetivo}}</h3>
-		<br>
-		<h2 style= "color: #80BC00;">A Quien va dirigido</h2>
-		<h3>{{edicionPremio.premio.dirigido}}</h3>
-		<br>
+		{% if edicionPremio.premio.introduccion %}
+			<h2 style= "color: #80BC00; ">Introducción</h2>
+			<h3>{{edicionPremio.premio.introduccion}}</h3>
+			<br>
+		{% endif %}
+		{% if edicionPremio.premio.objetivo %}
+			<h2 style= "color: #80BC00;">Objetivos</h2>
+			<h3>{{edicionPremio.premio.objetivo}}</h3>
+			<br>
+		{% endif %}
+		{% if edicionPremio.premio.dirigido %}
+			<h2 style= "color: #80BC00;">A Quien va dirigido</h2>
+			<h3>{{edicionPremio.premio.dirigido}}</h3>
+			<br>
+		{% endif %}
+		<h2 style= "color: #80BC00;display:inline">Ediciòn: </h2>
+		<h3 style= "display:inline">{{ edicionPremio.edicionPremio}}</h3>
+		<br><br>
 		
-		<h3 style= "color: #80BC00; ">Ediciòn</h3>
-		<h3>{{ edicionPremio.edicionPremio}}</h3>
-		<br>
+		<h2 style= "color: #80BC00; display:inline">Ganador: </h2> 
+		<h3 style= "display:inline">{{ edicionPremio.ganador}}</h3>
+		<br><br>
 		
-		<h3 style= "color: #80BC00;">Ganador </h3> 
-		<h3>{{ edicionPremio.ganador}}</h3>
-		<br>
 		{% if jurado %}
 			<h2 style= "color: #80BC00;">Jurado:</h2>
 			{% for j in jurado %} 
@@ -84,6 +92,16 @@
 		{% else %}
 			<p>No tenemos Jurado.</p>
 		{% endif %}
+		<br>
+		{% if edicionPremio.premio.imagen %}
+		{% load static %}
+			<img alt="{{ edicionPremio.premio.imagen.name }}" src="{{ edicionPremio.premio.imagen.url }}" width="100" height="10"/>
+		{% endif %}
+		<br><br>
+		{% if edicionPremio.premio.url %}
+			<h3 style= "color: #80BC00; display:inline">URL: </h3><h3 style= "display:inline">{{edicionPremio.premio.url}}</h3>
+		{% endif %} 
+	<br>
 		<br>   
 	</ul>
 {% else %}

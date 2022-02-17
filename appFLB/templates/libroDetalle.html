@@ -52,23 +52,33 @@
 {% block contenido %}
 <h1 style="text-decoration: underline">Detalles del Libro </h1>
 {% if libro %}
-	<h2>{{libro.titulo}}</h2>
-    <p>{{libro.sinopsis}}</p>
+	<h2 align="justify" style= "color: #348F41;"><strong>{{libro.titulo}}</strong></h2>
+	{% if libro.sinopsis %}
+		<h3 style= "color: #80BC00; display:inline"><strong>Sinopsis: </strong> </h3><p style= "display:inline">{{libro.sinopsis}}</p>
+	{% endif %}
+	<br><br>
+	{% if libro.fecha_publicacion %}
+		<h4 style= "color: #80BC00; display:inline">Fecha Publicación:</h4><h4 style= "display:inline"> {{ libro.fecha_publicacion}}</h4>
+	{% endif %}
+	<br><br>
 	{% if libro.imagen %}
-			{% load static %}
-			<img alt="{{ libro.imagen.name }}" src="{% static libro.imagen.name %}" width="140" height="10" />
-		{% else %}
-			<p>No hay foto.</p>
-		{% endif %} 
+	{% load static %}
+		<img alt="{{ libro.imagen.name }}" src="{{ libro.imagen.url }}" width="140" height="10" />
+	{% else %}
+		<p>No hay imagen.</p>
+	{% endif %} 
+	<br>
+	{% if libro.url %}
+		<h3 style= "color: #80BC00; display:inline">URL: </h3><h3 style= "display:inline">{{ libro.url }}</h3>
+	{% endif %} 
     <p>
         {% if autores %}
             {% for autor in autores %}
-				<h3>Autor: <a href="{% url 'autor' libro.id autor.id %}"> {{ autor.nombre}} {{autor.apellido}}</a></h3>
+				<h3 style= "color: #80BC00; display:inline">Autor: </h3><h3 style= "display:inline"> <a href="{% url 'autor' libro.id autor.id %}"> {{ autor.nombre}} {{autor.apellido}}</a></h3>
             {% endfor %}
         {% endif %}
     </p>
-	<br>
-		<h3>Editorial: <a href="{% url 'editorialDetalle' libro.editorial.id %}">{{libro.editorial.nombre}}</a></h3>
+	<h3 style= "color: #80BC00; display:inline">Editorial: </h3> <h3 style= "display:inline"> <a href="{% url 'editorialDetalle' libro.editorial.id %}">{{libro.editorial.nombre}}</a></h3>
     <br><br>
 
 {% else %}

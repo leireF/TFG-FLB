@@ -58,7 +58,7 @@
         <li><h3><a href="{% url 'libroDetalle' l.id  %}">{{ l.titulo}}</a>
 		{% if l.imagen %}
 			{% load static %}
-			<img alt="{{ l.imagen.name }}" src="{% static l.imagen.name %}" width=70" height="10" align="center" style="margin-left: 20px"/>
+			<img alt="{{ l.imagen.name }}" src="{{ l.imagen.url }}" width=70" height="10" align="center" style="margin-left: 20px"/>
 			
 		</h3></li>
 		{% else %}

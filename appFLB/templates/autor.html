@@ -52,15 +52,15 @@
 {% block contenido %}
 <h1 style="text-decoration: underline">Autor</h1>
 {% if autor %}
-    <h3>{{autor.nombre}} {{autor.apellido}}</h3>
+    <h3 style= "color: #348F41;"><strong>{{autor.nombre}} {{autor.apellido}} </strong></h3>
 	{% if autor.imagen %}
 	{% load static %}
-		<img alt="{{ autor.imagen.name }}" src="{% static autor.imagen.name %}" width="100" height="10" />
+		<img alt="{{ autor.imagen.name }}" src="{{ autor.imagen.url }}" width="100" height="10" />
 	{% endif %}
 
     {% if lista_libros %}
 		<br><br>
-		<h3>Lista de Libros escritos por este autor: </h3>
+		<h3 style= "color: #80BC00;">Lista de Libros escritos por este autor: </h3>
 		{% for p in lista_libros %}
 			<ul>
 				<li><h3>{{p.titulo}}</h3></li>
