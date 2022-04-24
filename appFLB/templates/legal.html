@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block menu %}
+<!-- main navigation -->
+	<nav id="topnav" role="navigation">
+		<div class="menu-toggle">Menu</div>  
+		<ul class="srt-menu" id="menu-main-navigation">
+			<li ><a href="{% url 'home' %}">Inicio</a></li>
+			<li><a href="{% url 'quienesSomos' %}">Quienes Somos</a>
+				<ul>
+					<li><a href="{% url 'padreLuisBernaola' %}">Padre Luis Bernaola</a></li>
+					<li><a href="{% url 'patronato' %}">Junta de Patronato</a></li>
+					<li><a href="{% url 'socio' %}">Estatutos</a></li>
+				</ul>
+				  
+			</li>
+			<li><a href="{% url 'actividades' %}">Actividades</a>
+				<ul>
+					<li><a href="{% url 'modulos' %}">Cursos Varios</a></li>
+					<li><a href="{% url 'edicionPremios' %}">Premios Rafael Álvarez Suárez</a></li>
+					<li><a href="{% url 'tedx' %}">TEDX</a></li>
+					<li><a href="{% url 'seminarios' %}">Seminarios</a></li>
+					<li><a href="{% url 'ediciones' %}">Becas grado y postgrado</a></li>
+					<li><a href="{% url 'patrocinio' %}">Patrocinio Trabajos Investigación</a></li>
+					<li><a href="{% url 'london' %}">London Finance Seminar</a></li>
+				</ul>
+			</li>
+			<li><a href="{% url 'libros' %}">Publicaciones</a></li>
+			<li class="current"><a href="{% url 'contacto' %}">Contacto</a></li>	
+		</ul>     
+	</nav><!-- end main navigation -->	
+{% endblock %}
+
+
+
+{% block contenido %}
+<h1 style="text-decoration: underline">Información Legal</h1>
+<h2 style="text-decoration: solid;">Política de Protección de Datos</h2>
+
+<p style="font-size: medium;">En cumplimiento de lo dispuesto en el artículo 5 de la Ley Orgánica 15/1999,
+de 13 de diciembre, de Protección de Datos de Carácter Personal (en adelante, "Lopd"), y Ley 34/2002, 
+de 11 de Julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (en adelante, "LSSICE"), 
+FUNDACIÓN LUIS BERNAOLA, le informa de que los datos de carácter personal captados mediante los formularios 
+contenidos en este sitio web y la finalidad declarada en los mismos, así como aquellos datos a los que 
+FUNDACIÓN LUIS BERNAOLA acceda como consecuencia de su navegación; de la consulta o solicitud de otros servicios, 
+serán recogidos en un fichero, previamente declarado frente a la Agencia Española de Protección de Datos, 
+llamado “CONTACTOS” cuyo responsable es FUNDACIÓN LUIS BERNAOLA. con sede social sita en: calle Unibertsitate Etorb., 24, 
+48007 BILBAO (BIZKAIA).<br>
+<br>
+Podrá ejercer su derecho de acceso, rectificación, cancelación y oposición al tratamiento de sus datos personales, 
+en los términos y condiciones previstos en la ley, enviando una solicitud junto a fotocopia del DNI del solicitante, 
+a dicha dirección postal. <br>
+<br>
+Los datos facilitados no serán objeto de ninguna cesión a terceros, salvo que se disponga del consentimiento 
+inequívoco de su titular o una ley lo autorice.<br>
+<br>
+FUNDACIÓN LUIS BERNAOLA, se compromete a tratar de forma absolutamente confidencial los datos de 
+carácter personal y a hacer uso de los mismos exclusivamente para las finalidades indicadas. FUNDACIÓN LUIS BERNAOLA. 
+le informa de que tiene implantadas las medidas de seguridad de índole técnica y organizativas necesarias para garantizar 
+la seguridad de sus datos de carácter personal y evitar su alteración, pérdida y tratamiento y/o acceso no autorizado, 
+habida cuenta del estado de la tecnología, la naturaleza de los datos almacenados y los riesgos a que están expuestos, 
+ya provengan de la acción humana o del medio físico o natural. Todo ello, de conformidad con lo previsto en el artículo 
+9 de la Lopd, en el Real Decreto 1720/2007, de 21 de diciembre, por el que se aprueba el Reglamento de Medidas de 
+Seguridad de los Ficheros Automatizados que contengan Datos de Carácter Personal y la ley 34/2002, de 11 de Julio, LSSICE.<br>
+<br>
+Rogamos que comunique de forma inmediata a FUNDACIÓN LUIS BERNAOLA. cualquier modificación de sus datos de 
+carácter personal a fin de que la información contenida en los ficheros de FUNDACIÓN LUIS BERNAOLA. esté en 
+todo momento actualizada y no contenga errores. Asimismo, con la aceptación de este aviso legal, reconoce que 
+la información y los datos personales recabados son exactos y veraces y que presta su expreso consentimiento 
+para el tratamiento de dichos datos.<br>
+<br></p>
+<h4>© COPYRIGHT</h4>
+
+<p style="font-size: medium;">Salvo si se indicase lo contrario de manera expresa, la responsabilidad de los contenidos y los servicios 
+ofrecidos a través de la web fundacionluisbernaola.org, así como los derechos de propiedad intelectual 
+y de los distintos elementos contenidos en ella son titularidad de:<br>
+
+<br>
+FUNDACIÓN LUIS BERNAOLA<br>
+CALLE UNIBERTSITATE ETORB. 24<br>
+48007 BILBAO (BIZKAIA).<br>
+<br>
+El acceso a esta página web o su utilización por parte de los usuarios, no debe considerarse, en forma alguna, 
+como el otorgamiento de ninguna licencia de uso o derecho sobre cualquier activo cuya titularidad o propiedad 
+corresponda a FUNDACIÓN LUIS BERNAOLA.<br>
+<br>
+FUNDACIÓN LUIS BERNAOLA se reserva la facultad de efectuar, en cualquier momento y sin necesidad de previo 
+aviso, modificaciones y actualizaciones sobre la información contenida en su web o en su configuración o presentación.<br>
+<br>
+Queda terminantemente prohibido realizar, sin el previo consentimiento de FUNDACIÓN LUIS BERNAOLA, cualquier 
+manipulación o alteración de esta página, no asumiendo FUNDACIÓN LUIS BERNAOLA ninguna responsabilidad derivada, 
+o que pudiera derivarse, de dicha manipulación o alteración por terceros.<br>
+<br>
+En consecuencia, FUNDACIÓN LUIS BERNAOLA, sus representantes, profesionales o empleados, no asumen ninguna 
+responsabilidad derivada, o que pudiera derivarse, de la utilización que los usuarios realicen de las informaciones 
+y contenidos de esta página web, ni de la aplicación de los mismos para fundamentar o apoyar cualquier juicio o 
+decisión personal o empresarial.<br>
+El usuario de esta página web, mediante su acceso a la misma, se obliga a utilizarla de manera plenamente 
+conforme con las leyes y los usos del tráfico y responderá, frente a FUNDACIÓN LUIS BERNAOLA o frente a 
+terceros, de cualesquiera daños y perjuicios que pudieran causarse como consecuencia del incumplimiento de dicha 
+obligación.<br>
+<br>
+La utilización no autorizada de la información contenida en esta web, así como los perjuicios y quebrantos 
+ocasionados en los derechos de propiedad intelectual e industrial de FUNDACIÓN LUIS BERNAOLA dará lugar 
+al ejercicio de las acciones que legalmente le correspondan y, en su caso, a las responsabilidades que de dicho 
+ejercicio se deriven.
+</p> 
+{% endblock %}

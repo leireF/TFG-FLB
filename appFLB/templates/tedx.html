@@ -4,7 +4,7 @@
 	<nav id="topnav" role="navigation">
 		<div class="menu-toggle">Menu</div>  
 		<ul class="srt-menu" id="menu-main-navigation">
-			<li ><a href="{% url 'home' %}">Home</a></li>
+			<li ><a href="{% url 'home' %}">Inicio</a></li>
 			<li ><a href="{% url 'quienesSomos' %}">Quienes Somos</a>
 				<ul>
 					<li><a href="{% url 'padreLuisBernaola' %}">Padre Luis Bernaola</a></li>
@@ -31,14 +31,14 @@
 {% endblock %}
 
 {% block eventos %}
-	<table border ="1" width="350">
+	<table border ="1" width="370">
 		<tr bgcolor="#FC9FFF">
 			<td align="center"><h3><strong>Ultimos 3 Eventos</strong></h3></td>
 		</tr>
 		{% load static %}
 		{% if lista_eventos %}
 			{% for n in lista_eventos %}
-				<tr><td height="40" style="text-indent: 1em">
+				<tr><td height="40" style="text-indent: 1em;font-size:0.9em">
 					<h4><a href="{% url 'eventoDetalle' n.id %}" >{{ n.titulo }}</a></h4>		
 				</td></tr>
 			{% endfor %}
@@ -58,18 +58,20 @@
 			<h4>{{ t.fecha}}</h4>
 		{% endif %}
 		<br>
-		<p align="justify">{{ t.texto}}</p>
+		<p align="justify" style="line-height: 1.5">{{ t.texto}}</p>
 		{% if t.imagen %}
 		{% load static %}
-			<img alt="{{ t.imagen.name }}" src="{{ t.imagen.url }}" width="100" height="10"/>
+			<br>
+			<center>
+				<img alt="{{ t.imagen.name }}" src="{{ t.imagen.url }}" align="midlle" width="400" height="40" style="border:2px solid; color:black"/>
+			</center>
 		{% endif %}
-		<br>
+		<br><br>
 		{% if t.url %}
-			<h3 style= "color: #80BC00; display:inline">URL: </h3><h3 style= "display:inline">{{ t.url }}</h3>
+			<h3 style= "color: #80BC00; display:inline">URL: </h3><h3 style= "display:inline"><a href="{{ t.url }}" target="_blank">Pagina de Tedx Deusto</a></h3>
 		{% endif %}		
 		<br>	
-    {% endfor %}
-                
+    {% endfor %}  
 {% else %}
     <p>No tenemos ninguna información.</p>
 {% endif %}

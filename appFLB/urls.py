@@ -28,5 +28,6 @@ urlpatterns = [
    path('seminarios/<int:id_modulo>', views.seminarioDetalle, name='seminarioDetalle'),
    path('patrocinio', views.patrocinio, name='patrocinio'),
    path('london', views.london, name='london'),
+   path('legal', views.legal, name='legal'),
 ]
 

@@ -4,7 +4,7 @@
 	<nav id="topnav" role="navigation">
 		<div class="menu-toggle">Menu</div>  
 		<ul class="srt-menu" id="menu-main-navigation">
-			<li ><a href="{% url 'home' %}">Home</a></li>
+			<li ><a href="{% url 'home' %}">Inicio</a></li>
 			<li ><a href="{% url 'quienesSomos' %}">Quienes Somos</a>
 				<ul>
 					<li><a href="{% url 'padreLuisBernaola' %}">Padre Luis Bernaola</a></li>
@@ -16,7 +16,7 @@
 			<li><a href="{% url 'actividades' %}">Actividades</a>
 				<ul>
 					<li><a href="{% url 'modulos' %}">Cursos Varios</a></li>
-					<li><a href="{% url 'edicionPremios' %}">Premios Rafael Álvarez Suarez</a></li>
+					<li><a href="{% url 'edicionPremios' %}">Premios Rafael Álvarez Suárez</a></li>
 					<li><a href="{% url 'tedx' %}">TEDX</a></li>
 					<li><a href="{% url 'seminarios' %}">Seminarios</a></li>
 					<li><a href="{% url 'ediciones' %}">Becas grado y postgrado</a></li>
@@ -54,17 +54,24 @@
 <h1 style="text-decoration: underline">Listado de Libros </h1>
 {% if lista_libros %}
 	{% for l in lista_libros %}
-	<ul>
-        <li><h3><a href="{% url 'libroDetalle' l.id  %}">{{ l.titulo}}</a>
-		{% if l.imagen %}
-			{% load static %}
-			<img alt="{{ l.imagen.name }}" src="{{ l.imagen.url }}" width=70" height="10" align="center" style="margin-left: 20px"/>
-			
-		</h3></li>
-		{% else %}
-			<p>No hay foto.</p>
-		{% endif %} 
-	</ul>
+	<table>
+		<tr>
+			<ul>
+				<td align="left" valign="top" width="600" height="100" >
+					<h3><a href="{% url 'libroDetalle' l.id  %}">{{ l.titulo}}</a></h3>
+				</td>
+				<td align="left" valign="top" width="100" height="100" >
+					{% if l.imagen %}
+						{% load static %}
+						<img alt="{{ l.imagen.name }}" src="{{ l.imagen.url }}" width="75" height="20" align="center" style="margin-left: 20px; border:1px solid; color:black"/>
+				
+					{% else %}
+						<p>No hay foto.</p>
+					{% endif %}
+				</td>
+			</ul>
+		</tr>
+	</table>
     {% endfor %}           
 {% else %}
     <p>No tenemos libros.</p>

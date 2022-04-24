@@ -4,7 +4,7 @@
 	<nav id="topnav" role="navigation">
 		<div class="menu-toggle">Menu</div>  
 		<ul class="srt-menu" id="menu-main-navigation">
-			<li ><a href="{% url 'home' %}">Home</a></li>
+			<li ><a href="{% url 'home' %}">Inicio</a></li>
 			<li ><a href="{% url 'quienesSomos' %}">Quienes Somos</a>
 				<ul>
 					<li><a href="{% url 'padreLuisBernaola' %}">Padre Luis Bernaola</a></li>
@@ -31,14 +31,14 @@
 {% endblock %}
 
 {% block eventos %}
-	<table border ="1" width="350">
+	<table border ="1" width="370">
 		<tr bgcolor="#FC9FFF">
 			<td align="center"><h3><strong>Ultimos 3 Eventos</strong></h3></td>
 		</tr>
 		{% load static %}
 		{% if lista_eventos %}
 			{% for n in lista_eventos %}
-				<tr><td height="40" style="text-indent: 1em">
+				<tr><td height="40" style="text-indent: 1em;font-size:0.9em">
 					<h4><a href="{% url 'eventoDetalle' n.id %}" >{{ n.titulo }}</a></h4>		
 				</td></tr>
 			{% endfor %}
@@ -51,20 +51,31 @@
 
 {% block contenido %}
 
-<h1 style="text-decoration: underline">Listado de Seminarios </h1>
-<br>
-<ul>
-	{% if lista_actividadFormacion %}
-		{% for m in lista_actividadFormacion %}
-			<li type ="square"><h2>{{ m.titulo}}</h2></li>
-			{% for m in m.modulos.all %}
-				<ul><li><h2><a href="{% url 'seminarioDetalle' m.id  %}">{{ m.titulo}}</a></h2></li></ul>
-			{% endfor %} 
+{% if lista_seminario %}
+    {% for t in lista_seminario %}
+		<h1 style="text-decoration: underline">{{ t.titulo}}</h1>
+		{% if t.fecha %}
+			<h4>{{ t.fecha}}</h4>
+		{% endif %}
+		<br>
+		<p align="justify" style="line-height: 1.5">{{ t.texto}}</p>
+		{% if t.imagen %}
+		{% load static %}
 			<br>
-		{% endfor %}        
-	{% else %}
-		<p>No tenemos ninguna actividad de formacion.</p>
-	{% endif %}
-<br>	
+			<center>
+				<img alt="{{ t.imagen.name }}" src="{{ t.imagen.url }}" align="midlle" width="400" height="40"/>
+			</center>
+		{% endif %}
+		<br><br>
+		{% if t.url %}
+			<h3 style= "color: #80BC00; display:inline">URL: </h3><h3 style= "display:inline"><a href="{{ t.url }}" target="_blank">Pagina de Seminarios</a></h3>
+		{% endif %}			
+		<br>	
+    {% endfor %}
+                
+{% else %}
+    <p>No tenemos ninguna información.</p>
+{% endif %}
+	
 </ul>
 {% endblock %}

@@ -4,7 +4,7 @@
 	<nav id="topnav" role="navigation">
 		<div class="menu-toggle">Menu</div>  
 		<ul class="srt-menu" id="menu-main-navigation">
-			<li ><a href="{% url 'home' %}">Home</a></li>
+			<li ><a href="{% url 'home' %}">Inicio</a></li>
 			<li ><a href="{% url 'quienesSomos' %}">Quienes Somos</a>
 				<ul>
 					<li><a href="{% url 'padreLuisBernaola' %}">Padre Luis Bernaola</a></li>
@@ -54,28 +54,39 @@
 {% if libro %}
 	<h2 align="justify" style= "color: #348F41;"><strong>{{libro.titulo}}</strong></h2>
 	{% if libro.sinopsis %}
-		<h3 style= "color: #80BC00; display:inline"><strong>Sinopsis: </strong> </h3><p style= "display:inline">{{libro.sinopsis}}</p>
+		<h3 style= "color: #80BC00;display:inline">Sinopsis: </h3>
+		<p align="center" style ="font-size: 1.3em; color:#666;display:inline">{{libro.sinopsis|linebreaks}}</p>
 	{% endif %}
-	<br><br>
+	<br>
 	{% if libro.fecha_publicacion %}
 		<h4 style= "color: #80BC00; display:inline">Fecha Publicación:</h4><h4 style= "display:inline"> {{ libro.fecha_publicacion}}</h4>
 	{% endif %}
 	<br><br>
 	{% if libro.imagen %}
 	{% load static %}
-		<img alt="{{ libro.imagen.name }}" src="{{ libro.imagen.url }}" width="140" height="10" />
+		<img alt="{{ libro.imagen.name }}" src="{{ libro.imagen.url }}" width="140" height="10" style="border:2px solid; color:black" />
 	{% else %}
 		<p>No hay imagen.</p>
 	{% endif %} 
 	<br>
 	{% if libro.url %}
 		<h3 style= "color: #80BC00; display:inline">URL: </h3><h3 style= "display:inline">{{ libro.url }}</h3>
+		<br><br><br>
 	{% endif %} 
+	{% if libro.titulo == "Memoria 2020"%}
+		<h4><a href="{% static 'images/LUIS BERNAOLA MEMORIA 2020.pdf' %}" download="Estatutos2014">Descargar Memoria 2020 </a></h4>
+	{% endif %} 
+	
+	<br>
+	
     <p>
         {% if autores %}
+		<h3 style= "color: #80BC00; display:inline">Autor </h3>
             {% for autor in autores %}
-				<h3 style= "color: #80BC00; display:inline">Autor: </h3><h3 style= "display:inline"> <a href="{% url 'autor' libro.id autor.id %}"> {{ autor.nombre}} {{autor.apellido}}</a></h3>
-            {% endfor %}
+				<ul>
+					<li type ="square" style="color:red"><h3 style= "display:inline"> <a href="{% url 'autor' libro.id autor.id %}"> {{ autor.nombre}} {{autor.apellido}}</a></h3></li>
+				</ul>
+				{% endfor %}
         {% endif %}
     </p>
 	<h3 style= "color: #80BC00; display:inline">Editorial: </h3> <h3 style= "display:inline"> <a href="{% url 'editorialDetalle' libro.editorial.id %}">{{libro.editorial.nombre}}</a></h3>

@@ -36,7 +36,7 @@ TIPOS_SOCIOS = (
     
 class Socio(models.Model):
     #id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length= 40, default=" ")
+    nombre = models.CharField(max_length= 20, default=" ")
     apellido = models.CharField(max_length = 30, default="", blank=True)
     NIF = models.CharField(max_length= 20, default="", blank=True)
     tipo = models.CharField(max_length=30, choices=TIPOS_SOCIOS)
@@ -51,7 +51,7 @@ class Socio(models.Model):
         
 class Autor(models.Model):
     #id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=30, default="")
+    nombre = models.CharField(max_length=20, default="")
     apellido = models.CharField(max_length = 30, default="")
     imagen = models.ImageField(upload_to='img',blank=True,null=True,verbose_name='Image')
     
@@ -75,10 +75,11 @@ class Libro(models.Model):
     #id = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=100, default="")
     editorial = models.ForeignKey(Editorial, on_delete=models.CASCADE)
-    sinopsis = models.CharField(max_length=2000, default="", blank=True)
+    #sinopsis = models.CharField(max_length=2000, default="", blank=True)
+    sinopsis = models.TextField(default="", blank=True)		
     fecha_publicacion = models.DateField(null=True,blank=True)
     autores = models.ManyToManyField(Autor)
-    imagen = models.ImageField(upload_to='img',blank=True,null=True,verbose_name='Image') #RUTA BUENA DE IMAGENES. para que funcione despues de subirlas copiar la carpeta y meterla dentro de appFLB\STATIC
+    imagen = models.ImageField(upload_to='img',blank=True,null=True,verbose_name='Image')
     url = models.URLField(null=True, blank=True, verbose_name="Dirección Web")
      
     def get_absolute_url(self):
@@ -207,6 +208,7 @@ class ActividadFormacion(models.Model):
         return self.titulo    
   
 TIPOS_EVENTOS = (
+    ('Seminarios de apoyo en matemáticas y mat. financieras', 'seminarios de apoyo en matemáticas y mat. financieras'),
     ('Tedx','tedx'),
     ('Patrocinio Trabajos Investigación','patrocinio trabajos investigación'),
 	('London Finance Seminar','london finance seminar'),
@@ -217,7 +219,7 @@ class Evento(models.Model):
     titulo = models.CharField(max_length=50, default="")
     fecha = models.DateField(null=True,blank=True)
     texto = models.CharField(max_length=1000, default="")
-    tipo = models.CharField(max_length=50, choices=TIPOS_EVENTOS)
+    tipo = models.CharField(max_length=70, choices=TIPOS_EVENTOS)
     imagen = models.ImageField(upload_to='img',blank=True,null=True,verbose_name='Image')
     url = models.URLField(null=True, blank=True, verbose_name="Dirección Web")
     
@@ -268,7 +270,7 @@ class Mensaje(models.Model):
     #id = models.AutoField(primary_key=True)
     nombreApellidos = models.CharField( max_length=50, default="")
     dni = models.CharField(max_length=9, default="")
-    telefono = models.IntegerField()
+    telefono = models.PositiveIntegerField()
     email= models.EmailField( max_length=30, default="")
     texto = models.TextField(default="")
     

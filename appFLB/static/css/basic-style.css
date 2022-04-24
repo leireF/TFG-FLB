@@ -79,7 +79,10 @@ aside {
 	margin:40px 0;
 }
 
-p{ margin:0 0 1.5em;}
+p{ 
+	margin:0 0 1.5em;
+	text-align: justify;
+}
 
 
 /* RESPONSIVE IMAGES */
@@ -282,6 +285,7 @@ But I think that some more breathing space is good:)
 }
 header{
 	padding:0;
+
 }
 #content {  
 	float:left;

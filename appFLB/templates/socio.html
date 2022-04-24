@@ -4,7 +4,7 @@
 	<nav id="topnav" role="navigation">
 		<div class="menu-toggle">Menu</div>  
 		<ul class="srt-menu" id="menu-main-navigation">
-			<li ><a href="{% url 'home' %}">Home</a></li>
+			<li ><a href="{% url 'home' %}">Inicio</a></li>
 			<li ><a href="{% url 'quienesSomos' %}">Quienes Somos</a>
 				<ul>
 					<li><a href="{% url 'padreLuisBernaola' %}">Padre Luis Bernaola</a></li>
@@ -18,7 +18,7 @@
 					<li><a href="{% url 'modulos' %}">Cursos Varios</a></li>
 					<li><a href="{% url 'edicionPremios' %}">Premios Rafael Álvarez Suarez</a></li>
 					<li><a href="{% url 'tedx' %}">TEDX</a></li>
-					<li><a href="{% url 'seminarios' % ">Seminarios</a></li>
+					<li><a href="{% url 'seminarios' %}">Seminarios</a></li>
 					<li><a href="{% url 'ediciones' %}">Becas grado y postgrado</a></li>
 					<li><a href="{% url 'patrocinio' %}">Patrocinio Trabajos Investigación</a></li>
 					<li><a href="{% url 'london' %}">London Finance Seminar</a></li>
@@ -31,14 +31,14 @@
 {% endblock %}
 
 {% block eventos %}
-	<table border ="1" width="350">
+	<table border ="1" width="370">
 		<tr bgcolor="#FC9FFF">
 			<td align="center"><h3><strong>Ultimos 3 Eventos</strong></h3></td>
 		</tr>
 		{% load static %}
 		{% if lista_eventos %}
 			{% for n in lista_eventos %}
-				<tr><td height="40" style="text-indent: 1em">
+				<tr><td height="40" style="text-indent: 1em;font-size:0.9em">
 					<h4><a href="{% url 'eventoDetalle' n.id %}" >{{ n.titulo }}</a></h4>		
 				</td></tr>
 			{% endfor %}
@@ -52,14 +52,16 @@
 {% block contenido %}
 {% load static %}
 <h1 style="text-decoration: underline">Los Fundadores y Colaboradores</h1>
-<p align="justify"> El colectivo de Fundadores y Colaboradores a 31 de diciembre de 2020 está compuesto por
+<p align="justify" style="line-height: 1.5"> El colectivo de Fundadores y Colaboradores a 31 de diciembre de 2020 está compuesto por
 466 miembros, de los cueles 410 son personas físicas y 56 jurídicas.
 <br>
 El conjunto de las personas físicas lo constituyen casi en su totalidad miembros de la antigua Asociación 
 de Licenciados por la Universidad Comercial de Deusto, hoy integrada en la Deusto Business Alumni.
 <br>
-La relación de Fundadores y Colaboradores a la fecha antes citada, es la siguiente:</p>
-<br>
+La relación de Fundadores y Colaboradores a la fecha antes citada se puede encontrar en el siguiente enlace</p>
+
+<h4><a href="{% static 'images/Estatutos refundidos 2.014.pdf' %}" download="Estatutos2014">Estatutos Refudiados </a></h4>
+<br><br><br>
 <table>
 	<tr>
 		{% if lista_socios_fisicos %}
@@ -85,7 +87,7 @@ La relación de Fundadores y Colaboradores a la fecha antes citada, es la siguie
 				{% endfor %} 
 			</td>
 		{% else %}
-			<p>No hay socios.</p>
+			<!--<p>No hay socios.</p>-->
 		{% endif %}
 		
 		{% if lista_socios_juridicos %}
@@ -111,24 +113,12 @@ La relación de Fundadores y Colaboradores a la fecha antes citada, es la siguie
 				{% endfor %}
 			</td>
 		{% else %}
-			<p>No hay socios.</p>
-		{% endif %}
-	
-		
+			<!--<p>No hay socios.</p>-->
+		{% endif %}	
 	</tr>
 </table>
-<p align="justify">El 2019 se ha registrado el siguiente movimiento de altas:
-<br><br>
-Fundadores al 31-12-19 ..................... 465
-<br>
-Altas  ....................................................... +  1
-<br>
-____
-<br>
-Fundadores al 31-12-20 ..................... 466
 
-  </p>
 <center>
-	<img src="{% static 'images/hoja 29.jpg' %}" width="500" height="400"/> 
+	<img src="{% static 'images/hoja 29.jpg' %}" style="border:2px solid; color:black" width="500" height="400"/> 
 </center>
 {% endblock %}

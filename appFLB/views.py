@@ -77,12 +77,12 @@ def editorialDetalle(request, id_editorial):
 #SACA EL LISTADO DE SOCIOS
 def socio(request):
     eventos = get_list_or_404(Evento.objects.order_by('-fecha')[:3])
-    socioJuridico = get_list_or_404(Socio.objects.order_by('tipo').filter(tipo ='Persona Jurídica'))
-    socioFisico = get_list_or_404(Socio.objects.order_by('tipo').filter(tipo ='Persona Física'))
-    context = {'lista_socios_juridicos': socioJuridico, 'lista_socios_fisicos': socioFisico,'lista_eventos': eventos }
+    #socioJuridico = get_list_or_404(Socio.objects.order_by('tipo').filter(tipo ='Persona Jurídica'))
+    #socioFisico = get_list_or_404(Socio.objects.order_by('tipo').filter(tipo ='Persona Física'))
+    #context = {'lista_socios_juridicos': socioJuridico, 'lista_socios_fisicos': socioFisico,'lista_eventos': eventos }
+    context = {'lista_eventos': eventos}
     return render(request, 'socio.html', context)	
-    
-    #REVISAR VISTA Y FILTRAR POR FECHAS    
+      
 #SACA EL PATRONATO    
 def patronato(request):
     cargos = get_list_or_404(Cargo.objects.order_by('cargo'))
@@ -93,8 +93,9 @@ def patronato(request):
 #SACA EL LISTADO DE EDICIONES DE BECAS
 def listaEdiciones(request):
     eventos = get_list_or_404(Evento.objects.order_by('-fecha')[:3])
-    edicion = get_list_or_404(EdicionBeca.objects.order_by('-fecha'))
-    context = {'lista_ediciones': edicion, 'lista_eventos': eventos }
+    #edicion = get_list_or_404(EdicionBeca.objects.order_by('-fecha'))
+    #context = {'lista_ediciones': edicion, 'lista_eventos': eventos }
+    context = {'lista_eventos': eventos }
     return render(request, 'ediciones.html', context)  
     
 #SACA LOS DATOS CONCRETOS DE UNA EDICION
@@ -108,8 +109,9 @@ def edicionDetalle(request, id_beca):
 #SACA EL LISTADO DE EDICIONES DE PREMIOS
 def edicionPremios(request):
     eventos = get_list_or_404(Evento.objects.order_by('-fecha')[:3])
-    edicionPremios = get_list_or_404(EdicionPremio.objects.order_by('-fecha'))
-    context = {'lista_edicionPremios': edicionPremios,'lista_eventos': eventos}
+    #edicionPremios = get_list_or_404(EdicionPremio.objects.order_by('-fecha'))
+    context = {'lista_eventos': eventos}
+    #context = {'lista_edicionPremios': edicionPremios,'lista_eventos': eventos}
     return render(request, 'edicionpremio.html', context)  	
 
 #SACA LOS DATOS CONCRETOS DE UNA EDICION
@@ -120,14 +122,15 @@ def edicionPremioDetalle(request, id_edicionPremios):
     context = {'edicionPremio': edicionPremio, 'jurado' : jurado,'lista_eventos': eventos}
     return render(request, 'edicionPremioDetalle.html', context)	
 	
-#SACA EL LISTADO DE EDICIONES DE MODULOS
+#SACA EL LISTADO DE CURSOS VARIOS
 def modulos(request):
     eventos = get_list_or_404(Evento.objects.order_by('-fecha')[:3])
-    actividadFormacion = get_list_or_404(ActividadFormacion.objects.order_by('titulo').filter(tipo = 'Cursos Varios'))
-    context = {'lista_actividadFormacion': actividadFormacion,'lista_eventos': eventos}
+    cursosvarios = get_list_or_404(ActividadFormacion.objects.order_by('titulo').filter(tipo = 'Cursos Varios'))
+    seminarios = get_list_or_404(ActividadFormacion.objects.order_by('titulo').filter(tipo = 'Seminarios'))
+    context = {'lista_cursos': cursosvarios,'lista_seminarios': seminarios,'lista_eventos': eventos}
     return render(request, 'modulos.html', context)  	
 
-#SACA LOS DATOS CONCRETOS DE UN MODULO
+#SACA LOS DATOS CONCRETOS DE UN CURSO
 def moduloDetalle(request, id_modulo):
     eventos = get_list_or_404(Evento.objects.order_by('-fecha')[:3])
     modulo = get_object_or_404(Modulo, pk = id_modulo)
@@ -135,7 +138,45 @@ def moduloDetalle(request, id_modulo):
     profesor = modulo.profesor.all()
     tema = modulo.tema.all()
     context = {'modulo': modulo, 'coordinador' : coordinador, 'profesor': profesor, 'tema': tema, 'lista_eventos': eventos}
-    return render(request, 'moduloDetalle.html', context)      
+    return render(request, 'moduloDetalle.html', context) 
+    
+#SACA LOS DATOS CONCRETOS DE UN SEMINARIO
+def seminarioDetalle(request, id_modulo):
+    eventos = get_list_or_404(Evento.objects.order_by('-fecha')[:3])
+    modulo = get_object_or_404(Modulo, pk = id_modulo)
+    coordinador = modulo.coordinadores.all()
+    profesor = modulo.profesor.all()
+    tema = modulo.tema.all()
+    context = {'modulo': modulo, 'coordinador' : coordinador, 'profesor': profesor, 'tema': tema, 'lista_eventos': eventos}
+    return render(request, 'seminarioDetalle.html', context)       
+  
+#SACA EL LISTADO DE SEMINARIOS
+def seminarios(request):
+    eventos = get_list_or_404(Evento.objects.order_by('-fecha')[:3])
+    seminario = get_list_or_404(Evento.objects.order_by('tipo').filter(tipo ='Seminarios de apoyo en matemáticas y mat. financieras'))
+    context = {'lista_seminario': seminario,'lista_eventos': eventos}
+    return render(request, 'seminarios.html', context)     
+  
+#SACA LOS DATOS DEL EVENTO TEDX  
+def tedx(request):
+    eventos = get_list_or_404(Evento.objects.order_by('-fecha')[:3])
+    tedx = get_list_or_404(Evento.objects.order_by('tipo').filter(tipo ='Tedx'))
+    context = {'lista_tedx': tedx,'lista_eventos': eventos}
+    return render(request, 'tedx.html', context)  
+  
+#SACA LOS DATOS DEL EVENTO PATROCINIO TRABAJOS INVESTIGACION  
+def patrocinio(request):
+    eventos = get_list_or_404(Evento.objects.order_by('-fecha')[:3])
+    patrocinio = get_list_or_404(Evento.objects.order_by('tipo').filter(tipo ='Patrocinio Trabajos Investigación'))
+    context = {'lista_patrocinio': patrocinio,'lista_eventos': eventos}
+    return render(request, 'patrocinio.html', context)  
+  
+#SACA LOS DATOS DEL EVENTO LONDON FINANCE SEMINAR  
+def london(request):
+    london = get_list_or_404(Evento.objects.order_by('tipo').filter(tipo ='London Finance Seminar'))
+    eventos = get_list_or_404(Evento.objects.order_by('-fecha')[:3])
+    context = {'lista_london': london,'lista_eventos': eventos}
+    return render(request, 'london.html', context)  
     
 def formularioForm(request):
 	submitted = False
@@ -151,37 +192,9 @@ def formularioForm(request):
 		submitted = True
 		
 	return render(request, 'contacto.html', {'form':form})
-    
-def tedx(request):
-    eventos = get_list_or_404(Evento.objects.order_by('-fecha')[:3])
-    tedx = get_list_or_404(Evento.objects.order_by('tipo').filter(tipo ='Tedx'))
-    context = {'lista_tedx': tedx,'lista_eventos': eventos}
-    return render(request, 'tedx.html', context)  
-    
-def seminarios(request):
-    eventos = get_list_or_404(Evento.objects.order_by('-fecha')[:3])
-    actividadFormacion = get_list_or_404(ActividadFormacion.objects.order_by('titulo').filter(tipo = 'Seminarios'))
-    context = {'lista_actividadFormacion': actividadFormacion,'lista_eventos': eventos}
-    return render(request, 'seminarios.html', context)   
-    
-#SACA LOS DATOS CONCRETOS DE UN SEMINARIO
-def seminarioDetalle(request, id_modulo):
-    eventos = get_list_or_404(Evento.objects.order_by('-fecha')[:3])
-    modulo = get_object_or_404(Modulo, pk = id_modulo)
-    coordinador = modulo.coordinadores.all()
-    profesor = modulo.profesor.all()
-    tema = modulo.tema.all()
-    context = {'modulo': modulo, 'coordinador' : coordinador, 'profesor': profesor, 'tema': tema, 'lista_eventos': eventos}
-    return render(request, 'seminarioDetalle.html', context)   
-    
-def patrocinio(request):
-    eventos = get_list_or_404(Evento.objects.order_by('-fecha')[:3])
-    patrocinio = get_list_or_404(Evento.objects.order_by('tipo').filter(tipo ='Patrocinio Trabajos Investigación'))
-    context = {'lista_patrocinio': patrocinio,'lista_eventos': eventos}
-    return render(request, 'patrocinio.html', context)  
-    
-def london(request):
-    london = get_list_or_404(Evento.objects.order_by('tipo').filter(tipo ='London Finance Seminar'))
-    eventos = get_list_or_404(Evento.objects.order_by('-fecha')[:3])
-    context = {'lista_london': london,'lista_eventos': eventos}
-    return render(request, 'london.html', context)  
+
+#SACA LA INFORMACIÓN LEGAL DE PROTECCION DE DATOS
+def legal(request):
+	eventos = get_list_or_404(Evento.objects.order_by('-fecha')[:3])
+	context = {'lista_eventos': eventos}
+	return render(request, 'legal.html', context)

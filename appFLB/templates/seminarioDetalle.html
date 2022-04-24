@@ -4,7 +4,7 @@
 	<nav id="topnav" role="navigation">
 		<div class="menu-toggle">Menu</div>  
 		<ul class="srt-menu" id="menu-main-navigation">
-			<li ><a href="{% url 'home' %}">Home</a></li>
+			<li ><a href="{% url 'home' %}">Inicio</a></li>
 			<li ><a href="{% url 'quienesSomos' %}">Quienes Somos</a>
 				<ul>
 					<li><a href="{% url 'padreLuisBernaola' %}">Padre Luis Bernaola</a></li>
@@ -15,10 +15,10 @@
 			</li>
 			<li><a href="{% url 'actividades' %}">Actividades</a>
 				<ul>
-					<li><a href="{% url 'modulos' %}">Cursos Varios</a></li>
+					<li class="current"><a href="{% url 'modulos' %}">Cursos Varios</a></li>
 					<li><a href="{% url 'edicionPremios' %}">Premios Rafael Álvarez Suarez</a></li>
 					<li><a href="{% url 'tedx' %}">TEDX</a></li>
-					<li class="current"><a href="{% url 'seminarios' %}">Seminarios</a></li>
+					<li><a href="{% url 'seminarios' %}">Seminarios</a></li>
 					<li><a href="{% url 'ediciones' %}">Becas grado y postgrado</a></li>
 					<li><a href="{% url 'patrocinio' %}">Patrocinio Trabajos Investigación</a></li>
 					<li><a href="{% url 'london' %}">London Finance Seminar</a></li>
@@ -31,14 +31,14 @@
 {% endblock %}
 
 {% block eventos %}
-	<table border ="1" width="350">
+	<table border ="1" width="370">
 		<tr bgcolor="#FC9FFF">
 			<td align="center"><h3><strong>Ultimos 3 Eventos</strong></h3></td>
 		</tr>
 		{% load static %}
 		{% if lista_eventos %}
 			{% for n in lista_eventos %}
-				<tr><td height="40" style="text-indent: 1em">
+				<tr><td height="40" style="text-indent: 1em;font-size:0.9em">
 					<h4><a href="{% url 'eventoDetalle' n.id %}" >{{ n.titulo }}</a></h4>		
 				</td></tr>
 			{% endfor %}
@@ -86,7 +86,7 @@
 						{% if t.parte %}
 							<h4><strong> {{t.parte}} </strong></h4>
 						{% endif %}
-						<h4 align="justify"> {{t.programa}} </h4>
+						<p align="justify"> {{t.programa|linebreaks}} </p>
 					</ul>
 					<br>
 				{% endfor %}

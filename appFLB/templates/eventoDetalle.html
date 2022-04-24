@@ -4,7 +4,7 @@
 	<nav id="topnav" role="navigation">
 		<div class="menu-toggle">Menu</div>  
 		<ul class="srt-menu" id="menu-main-navigation">
-			<li class="current"><a href="{% url 'home' %}">Home</a></li>
+			<li class="current"><a href="{% url 'home' %}">Inicio</a></li>
 			<li ><a href="{% url 'quienesSomos' %}">Quienes Somos</a>
 				<ul>
 					<li><a href="{% url 'padreLuisBernaola' %}">Padre Luis Bernaola</a></li>
@@ -16,7 +16,7 @@
 			<li><a href="{% url 'actividades' %}">Actividades</a>
 				<ul>
 					<li><a href="{% url 'modulos' %}">Cursos Varios</a></li>
-					<li><a href="{% url 'edicionPremios' %}">Premios Rafael Álvarez Suarez</a></li>
+					<li><a href="{% url 'edicionPremios' %}">Premios Rafael Álvarez Suárez</a></li>
 					<li><a href="{% url 'tedx' %}">TEDX</a></li>
 					<li><a href="{% url 'seminarios' %}">Seminarios</a></li>
 					<li><a href="{% url 'ediciones' %}">Becas grado y postgrado</a></li>
@@ -41,14 +41,17 @@
 	<br>
 	<h3 style= "color: #80BC00; display:inline">Tipo de Evento: </h3><h3 style= "display:inline"> {{evento.tipo }}</h3>
 	<br><br>	
-	<h3 align="justify">{{evento.texto}}</h3>	
+	<h4 align="justify" style="line-height: 1.5">{{evento.texto}}</h4>	
 	<br>
 	{% if evento.imagen %}
 	{% load static %}
-		<img alt="{{ evento.imagen.name }}" src="{{ evento.imagen.url }}" width="100" height="10"/>
+		<center>
+			<img alt="{{ evento.imagen.name }}" src="{{ evento.imagen.url }}" style="border:2px solid; color:black" width="400" height="30"/>
+		</center>
+		<br><br>
 	{% endif %}
 	{% if evento.url %}
-		<ul><h4 style= "color: #80BC00; display:inline">URL: </h4><h4 style= "display:inline">{{ evento.url }}</h4></ul>
+		<h4 style= "color: #80BC00; display:inline">URL: </h4><h4 style= "display:inline"><a href="{{ evento.url }}" target="_blank">Pagina de Tedx Deusto</a></h4>
 	{% endif %}
 {% else %}
     <p>No existe este evento.</p>

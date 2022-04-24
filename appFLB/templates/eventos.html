@@ -4,7 +4,7 @@
 	<nav id="topnav" role="navigation">
 		<div class="menu-toggle">Menu</div>  
 		<ul class="srt-menu" id="menu-main-navigation">
-			<li class="current"><a href="{% url 'home' %}">Home</a></li>
+			<li class="current"><a href="{% url 'home' %}">Inicio</a></li>
 			<li ><a href="{% url 'quienesSomos' %}">Quienes Somos</a>
 				<ul>
 					<li><a href="{% url 'padreLuisBernaola' %}">Padre Luis Bernaola</a></li>
@@ -16,7 +16,7 @@
 			<li><a href="{% url 'actividades' %}">Actividades</a>
 				<ul>
 					<li><a href="{% url 'modulos' %}">Cursos Varios</a></li>
-					<li><a href="{% url 'edicionPremios' %}">Premios Rafael Álvarez Suarez</a></li>
+					<li><a href="{% url 'edicionPremios' %}">Premios Rafael Álvarez Suárez</a></li>
 					<li><a href="{% url 'tedx' %}">TEDX</a></li>
 					<li><a href="{% url 'seminarios' %}">Seminarios</a></li>
 					<li><a href="{% url 'ediciones' %}">Becas grado y postgrado</a></li>
@@ -40,14 +40,9 @@
 			{% if n.fecha %}
 				<h4>{{ n.fecha }}</h4>	
 			{% endif %}
-			<h3 align="justify">{{ n.texto|truncatewords:20 }}</h3>	
+			<h4 align="justify" style="line-height: 1.5">{{ n.texto|truncatewords:20 }}</h4>	
 			<br>
-			{% if n.url %}
-				<ul><h4 style= "color: #80BC00; display:inline">URL: </h4><h4 style= "display:inline">{{ n.url }}</h4></ul>
-			{% endif %}
-			{% if n.imagen %}
-				<img alt="{{ n.imagen.name }}" src="{{ n.imagen.url }}" width="100" height="10"/>
-			{% endif %}
+
 			<br>
 		{% endfor %}
 	{% endif %}
