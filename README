@@ -2,8 +2,19 @@ Pagina Web Fundación Luis Bernaola
 ===============================
 
 Configuración
-------------- 
+-------------
+**PASO 1: Instala Django en un entorno virtual**
+El primer paso será crear un entorno virtual y así disponer de un entorno aislado donde instalar nuestras dependencias de Django sin que nos afecten otras que tengamos instaladas en nuestro sistema. Para crear el entorno virtual:
+    mkvirtualenv webflb
+
+Activar el entorno (se activa automáticamente al crearlo)
+    workon webflb
+
+Podemos saber si estamos dentro de un entorno virtual porque la consola nos pondrá en toto momento el nombre del entorno en el que nos encontramos entre paréntesis. En este caso:
+    (webflb) C:\Users\developer>
+
 **Enlace de la documenatcion en Internet**
+
     https://github.com/leireF/TFG-FLB.git
 
 **Enlaces configuración Django**
