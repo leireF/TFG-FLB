@@ -218,7 +218,7 @@ https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 Configuracion servidor hostinet
 https://www.hostinet.com/formacion/panel-alojamiento/desplegar-aplicacion-python-cpanel/
 
-https://www.hostinet.com/formacion/panel-alojamiento todo-lo-que-puedes-hacer-con-el-administrador-de-archivos-de-cpanel/
+https://www.hostinet.com/formacion/panel-alojamiento/todo-lo-que-puedes-hacer-con-el-administrador-de-archivos-de-cpanel/
 
 https://www.hostinet.com/formacion/acceso-ftp/como-subir-archivos-a-mi-web-a-traves-de-ftp-con-filezilla/
 
