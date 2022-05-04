@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Cargo, Miembro, Socio, Autor, Editorial, Libro, Premio, Ganador, Jurado, EdicionPremio, Coordinador, Profesor
-from .models import Tema, Modulo, ActividadFormacion, Evento, Beca, EdicionBeca, Beneficiario
+from .models import Tema, Modulo, ActividadFormacion, Evento, Beca, EdicionBeca, Beneficiario, Mensaje
 
 # Register your models here.
 admin.site.register(Cargo)
@@ -22,3 +22,4 @@ admin.site.register(Evento)
 admin.site.register(Beca)
 admin.site.register(EdicionBeca)
 admin.site.register(Beneficiario)
+admin.site.register(Mensaje)
