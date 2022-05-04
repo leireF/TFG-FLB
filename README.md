@@ -200,11 +200,16 @@ En este paso se crean las vistas correspondientes a las URLs
 
 **PASO 8: Utilizar plantillas para mostrar la información**
 
+En este paso se actualizan las vistas creadas `views.py`
+Despues se creaa las plantillas (en una carpeta "templates" dentro del directorio de la aplicación) que definan la estructura de las páginas HTML resultantes
+
+
 **Enlace de la documenatcion en Internet**
 
-    https://github.com/leireF/TFG-FLB.git
+https://github.com/leireF/TFG-FLB.git
+
 
 **Enlaces configuración Django**
 
-    https://docs.djangoproject.com/en/4.0/howto/deployment/
-    https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
+https://docs.djangoproject.com/en/4.0/howto/deployment/
+https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
