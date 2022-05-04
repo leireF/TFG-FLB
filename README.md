@@ -68,5 +68,3 @@ Dentro del directorio de la aplicación, crear un fichero llamado urls.py que ut
 
     https://docs.djangoproject.com/en/4.0/howto/deployment/
     https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
-
-    
