@@ -209,8 +209,16 @@ Despues se creaa las plantillas (en una carpeta "templates" dentro del directori
 https://github.com/leireF/TFG-FLB.git
 
 
-**Enlaces configuración Django**
-
+**Referencias despliege en un servidor**
+Configuracion de Django
 https://docs.djangoproject.com/en/4.0/howto/deployment/
 
 https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
+
+Configuracion servidor hostinet
+https://www.hostinet.com/formacion/panel-alojamiento/desplegar-aplicacion-python-cpanel/
+
+https://www.hostinet.com/formacion/panel-alojamiento todo-lo-que-puedes-hacer-con-el-administrador-de-archivos-de-cpanel/
+
+https://www.hostinet.com/formacion/acceso-ftp/como-subir-archivos-a-mi-web-a-traves-de-ftp-con-filezilla/
+
