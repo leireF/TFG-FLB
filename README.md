@@ -211,11 +211,13 @@ https://github.com/leireF/TFG-FLB.git
 
 **Referencias despliege en un servidor**
 Configuracion de Django
+
 https://docs.djangoproject.com/en/4.0/howto/deployment/
 
 https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 Configuracion servidor hostinet
+
 https://www.hostinet.com/formacion/panel-alojamiento/desplegar-aplicacion-python-cpanel/
 
 https://www.hostinet.com/formacion/panel-alojamiento/todo-lo-que-puedes-hacer-con-el-administrador-de-archivos-de-cpanel/
