@@ -214,7 +214,20 @@ Configuracion de Django
 
 https://docs.djangoproject.com/en/4.0/howto/deployment/
 
-https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
+- https://docs.djangoproject.com/en/4.0/howto/deployment/wsgi/
+
+- https://docs.djangoproject.com/en/4.0/howto/deployment/wsgi/gunicorn/
+
+- https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
+
+https://devcode.la/tutoriales/multiples-settings-en-django/
+
+Los archivos static en produccion no funcionan, hay que pasar a collstatic https://docs.djangoproject.com/en/3.1/howto/static-files/deployment/   
+https://runebook.dev/es/docs/django/ref/contrib/staticfiles
+
+https://www.digitalocean.com/community/tutorials/como-configurar-django-con-postgres-nginx-y-gunicorn-en-ubuntu-18-04-es
+
+https://cirelramos.blogspot.com/2015/08/configurar-server-django-gunicorn-y.html --> tutorial seguido
 
 Configuracion servidor hostinet
 
