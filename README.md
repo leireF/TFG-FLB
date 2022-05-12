@@ -229,6 +229,10 @@ https://www.digitalocean.com/community/tutorials/como-configurar-django-con-post
 
 https://cirelramos.blogspot.com/2015/08/configurar-server-django-gunicorn-y.html --> tutorial seguido
 
+https://www.youtube.com/watch?v=vPctojOTL20 --> tutorial subir proyecto a cpanel
+
+https://www.youtube.com/watch?v=S-aLcjcFSKw --> tutorial configuracion projecto sin terminal    EL QUE HA FUNCIONADO
+
 Configuracion servidor hostinet
 
 https://www.hostinet.com/formacion/panel-alojamiento/desplegar-aplicacion-python-cpanel/

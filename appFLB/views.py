@@ -63,7 +63,7 @@ def autor(request, id_autor, id_libro):
     autor = get_object_or_404(Autor, pk = id_autor)
     libro = get_object_or_404(Libro, pk = id_libro)
     libros = autor.libro_set.all()
-    context = {'libro': libro, 'autor' : autor ,'lista_libros': libros }
+    context = {'libro': libro, 'autor' : autor ,'lista_libros': libros,'lista_eventos': eventos  }
     return render(request, 'autor.html', context)
 
 #SACA LOS LIBROS DE UNA EDITORIAL EN CONCRETO
